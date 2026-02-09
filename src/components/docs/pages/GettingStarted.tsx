@@ -1,5 +1,6 @@
 import { EyeglassDemo } from '../EyeglassDemo'
 import { CopyIcon, CheckIcon } from '../../Icons'
+import { CopyableCode } from '../CopyableCode'
 import { useState } from 'react'
 
 const installCommand = 'npx @eyeglass/cli init'
@@ -50,7 +51,7 @@ export function GettingStarted() {
       <section className="docs-section" id="quickstart">
         <h2>Quick Start</h2>
         <h3>1. Install Eyeglass</h3>
-        <pre><code>npx @eyeglass/cli init</code></pre>
+        <CopyableCode code="npx @eyeglass/cli init" />
         <p>This single command:</p>
         <ul>
           <li>Installs <code>@eyeglass/inspector</code> as a dev dependency</li>
@@ -60,12 +61,12 @@ export function GettingStarted() {
         </ul>
 
         <h3>2. Start Your Dev Server</h3>
-        <pre><code>npm run dev</code></pre>
+        <CopyableCode code="npm run dev" />
 
         <h3>3. Start the Agent</h3>
-        <pre><code>claude</code></pre>
+        <CopyableCode code="claude" />
         <p>Tell the agent to listen for requests:</p>
-        <pre><code>&gt; wait_for_request</code></pre>
+        <CopyableCode code="> wait_for_request" />
 
         <h3>4. Use Eyeglass</h3>
         <p>In your browser:</p>
