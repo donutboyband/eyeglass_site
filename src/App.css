@@ -1091,15 +1091,6 @@
   background: var(--accent-soft);
   padding: 6px 12px;
   border-radius: 8px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.inspector-tag::after {
-  content: '/>';
-  font-size: 11px;
-  opacity: 0.6;
 }
 
 .inspector-multi-btn {
