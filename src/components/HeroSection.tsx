@@ -74,7 +74,7 @@ export function HeroSection({ installCommand, copied, onCopy }: Props) {
         </h1>
         <p className="hero-subtitle">
           Point at UI. Eyeglass captures component, file path, a11y tree, and computed styles,
-          then allows you to talk with Claude from the browser to implement the changes.
+          then allows you to talk with the agent from the browser to implement the changes.
         </p>
         <div className="hero-actions">
           <div className="install">
@@ -86,7 +86,7 @@ export function HeroSection({ installCommand, copied, onCopy }: Props) {
           </div>
         </div>
         <p className="hero-note">
-          Works with Vite, Next.js, CRA, Remix. No Claude calls on this demo page.
+          Works with Vite, Next.js, CRA, Remix. No agent calls on this demo page.
         </p>
       </div>
       <div className="hero-proof">
