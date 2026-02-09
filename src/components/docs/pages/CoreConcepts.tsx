@@ -1,4 +1,4 @@
-import { highlightJson } from '../../../utils/highlightJson'
+import { CodeBlock } from '../../CodeBlock'
 
 const sampleSnapshot = `{
   "role": "button",
@@ -34,6 +34,26 @@ const sampleSnapshot = `{
   },
   "timestamp": 1770657937961,
   "url": "http://localhost:5173/#demo"
+}`
+
+const mcpConfigCode = `{
+  "mcpServers": {
+    "eyeglass": {
+      "command": "npx",
+      "args": ["eyeglass-bridge"]
+    }
+  }
+}`
+
+const multiSelectPayload = `{
+  "interactionId": "abc123",
+  "snapshots": [
+    { /* first element */ },
+    { /* second element */ },
+    { /* third element */ }
+  ],
+  "userNote": "Make these buttons the same size",
+  "autoCommit": true
 }`
 
 export function CoreConcepts() {
@@ -75,14 +95,7 @@ export function CoreConcepts() {
 
         <h3>Starting the Bridge</h3>
         <p>The bridge starts automatically when Claude Code initializes, as configured in <code>.claude/settings.json</code>:</p>
-        <pre><code>{`{
-  "mcpServers": {
-    "eyeglass": {
-      "command": "npx",
-      "args": ["eyeglass-bridge"]
-    }
-  }
-}`}</code></pre>
+        <CodeBlock code={mcpConfigCode} language="json" />
 
         <h3>Bridge Architecture</h3>
         <p>The bridge runs on two ports:</p>
@@ -97,9 +110,7 @@ export function CoreConcepts() {
         <p>When you select an element, Eyeglass captures a comprehensive semantic snapshot. This is what separates Eyeglass from simple "inspect element" tools—it understands your framework, component structure, and runtime state.</p>
 
         <h3>Example Snapshot</h3>
-        <pre className="payload-code">
-          <code dangerouslySetInnerHTML={{ __html: highlightJson(sampleSnapshot) }} />
-        </pre>
+        <CodeBlock code={sampleSnapshot} language="json" />
 
         <h3>What's Included</h3>
         <ul>
@@ -143,16 +154,7 @@ export function CoreConcepts() {
 
         <h3>Payload Structure</h3>
         <p>When multiple elements are selected, the payload includes a <code>snapshots</code> array instead of a single <code>snapshot</code>:</p>
-        <pre><code>{`{
-  "interactionId": "abc123",
-  "snapshots": [
-    { /* first element */ },
-    { /* second element */ },
-    { /* third element */ }
-  ],
-  "userNote": "Make these buttons the same size",
-  "autoCommit": true
-}`}</code></pre>
+        <CodeBlock code={multiSelectPayload} language="json" />
       </section>
     </>
   )
