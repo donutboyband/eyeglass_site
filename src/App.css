@@ -137,6 +137,7 @@
 .agent-typewriter {
   display: inline-block;
   min-width: 6.2em;
+  text-align: left;
 }
 
 .agent-typewriter .cursor {
