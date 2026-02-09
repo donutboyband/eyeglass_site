@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "eyeglass": {
+      "command": "npx",
+      "args": [
+        "eyeglass-bridge"
+      ]
+    }
+  }
+}
