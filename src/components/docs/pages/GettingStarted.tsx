@@ -7,12 +7,9 @@ export function GettingStarted() {
         <p className="section-label">Documentation</p>
         <h1>Eyeglass Documentation</h1>
         <p className="hero-subtitle">Visual debugging for AI coding agents. Point at UI elements, describe what you want, and let Claude Code edit with full context.</p>
-        <div className="hero-actions" style={{ justifyContent: 'flex-start' }}>
-          <a className="btn primary" href="#quickstart">Get Started</a>
-          <code className="install" aria-label="Install command">
-            <span className="prompt">$</span>
-            <span>{installCommand}</span>
-          </code>
+        <div className="hero-actions minimal" style={{ justifyContent: 'flex-start' }}>
+          <a className="link-arrow" href="#quickstart">Get Started →</a>
+          <code className="install minimal">{installCommand}</code>
         </div>
       </div>
 

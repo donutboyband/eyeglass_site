@@ -7,7 +7,7 @@ export function QuickstartSection({ items }: Props) {
     <section className="section" id="quickstart">
       <div className="section-header">
         <p className="section-label">Quickstart</p>
-        <h2>Three commands to run Eyeglass</h2>
+        <h2>Two commands to run Eyeglass</h2>
       </div>
       <div className="quickstart">
         {items.map((item) => (

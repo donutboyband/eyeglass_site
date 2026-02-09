@@ -163,6 +163,11 @@
   margin-bottom: 1.5rem;
 }
 
+.hero-actions.minimal {
+  align-items: center;
+  gap: 1rem;
+}
+
 .btn {
   display: inline-flex;
   align-items: center;
@@ -193,6 +198,28 @@
 .btn.small {
   padding: 0.55rem 0.9rem;
   font-size: 0.9rem;
+}
+
+.link-arrow {
+  color: var(--color-accent);
+  font-weight: 500;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.link-arrow:hover {
+  opacity: 0.8;
+}
+
+.install.minimal {
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
 }
 
 .install {

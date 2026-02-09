@@ -18,9 +18,6 @@ export function NavBar({ theme, toggleTheme }: Props) {
           <span>eyeglass</span>
         </Link>
         <div className="nav-links">
-          <a href="/#demo" className="nav-link">Demo</a>
-          <a href="/#flow" className="nav-link">Flow</a>
-          <a href="/#capabilities" className="nav-link">Capabilities</a>
           <Link to="/docs" className={`nav-link${isDocsPage ? ' active' : ''}`}>Docs</Link>
           <a
             href="https://github.com/donutboyband/eyeglass"

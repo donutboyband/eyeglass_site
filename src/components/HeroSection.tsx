@@ -16,12 +16,12 @@ export function HeroSection({ installCommand, copied, onCopy }: Props) {
         <h1>
           <span className="highlight">
             {' '}
-            Eyeglass turns clicks into code edits.
+            Turn clicks into commits.
           </span>
         </h1>
         <p className="hero-subtitle">
           Point at UI. Eyeglass captures component, file path, a11y tree, and computed styles,
-          then sends Claude the exact context it needs.
+          then allows you to talk with Claude from the browser to implement the changes.
         </p>
         <div className="hero-actions">
           <div className="install">
