@@ -7,7 +7,7 @@ export function DemoSection() {
         <p className="section-label">See It In Action</p>
         <h2>Point. Describe. Done.</h2>
         <p className="section-sub">
-          Select elements, type what you want, and watch Claude make the changes in real-time.
+          Select elements, type what you want, and watch the agent make changes in real-time.
         </p>
       </div>
       <LandingDemo />
