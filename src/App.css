@@ -630,6 +630,7 @@
 .eyeglass-demo {
   position: relative;
   margin: 2rem 0;
+  padding-bottom: 80px;
 }
 
 .demo-browser {
