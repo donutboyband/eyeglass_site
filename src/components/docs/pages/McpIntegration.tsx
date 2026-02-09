@@ -13,7 +13,7 @@ export function McpIntegration() {
     <>
       <section className="docs-section" id="mcp-tools">
         <h2>MCP Tools</h2>
-        <p>Claude Code interacts with Eyeglass through MCP (Model Context Protocol) tools exposed by the bridge. These tools enable bidirectional communication between Claude and your browser.</p>
+        <p>the agent interacts with Eyeglass through MCP (Model Context Protocol) tools exposed by the bridge. These tools enable bidirectional communication between the agent and your browser.</p>
         <div className="docs-table">
           {mcpTools.map(([tool, desc]) => (
             <div key={tool} className="docs-row">
@@ -69,7 +69,7 @@ export function McpIntegration() {
 
       <section className="docs-section" id="update-status">
         <h2>update_status</h2>
-        <p>Updates the browser UI with Claude's current progress. This creates status chips in the inspector panel that the user can see in real-time.</p>
+        <p>Updates the browser UI with the agent's current progress. This creates status chips in the inspector panel that the user can see in real-time.</p>
 
         <h3>Usage</h3>
         <pre><code>{`update_status({
@@ -99,7 +99,7 @@ export function McpIntegration() {
 
       <section className="docs-section" id="send-thought">
         <h2>send_thought</h2>
-        <p>Streams Claude's reasoning back to the user in real-time. This helps users understand what Claude is thinking and builds trust in the process.</p>
+        <p>Streams the agent's reasoning back to the user in real-time. This helps users understand what the agent is thinking and builds trust in the process.</p>
 
         <h3>Usage</h3>
         <pre><code>{`send_thought({
@@ -131,21 +131,21 @@ export function McpIntegration() {
 
         <h3>How It Works</h3>
         <ol>
-          <li>Claude calls <code>wait_for_request</code></li>
+          <li>the agent calls <code>wait_for_request</code></li>
           <li>The bridge holds the connection open (long-polling)</li>
           <li>User selects an element and submits a request in the browser</li>
-          <li>Bridge immediately returns the request to Claude</li>
-          <li>Claude processes and makes changes</li>
+          <li>Bridge immediately returns the request to the agent</li>
+          <li>the agent processes and makes changes</li>
           <li>Cycle repeats with another <code>wait_for_request</code></li>
         </ol>
 
         <h3>Typical Workflow</h3>
-        <pre><code>{`# In Claude Code terminal
+        <pre><code>{`# In the agent terminal
 > wait_for_request
 
 # (User clicks element and types "make this blue")
 
-# Claude receives:
+# the agent receives:
 {
   "interactionId": "abc123",
   "snapshot": { /* element data */ },
@@ -153,7 +153,7 @@ export function McpIntegration() {
   "autoCommit": true
 }
 
-# Claude makes changes...
+# the agent makes changes...
 # Then calls wait_for_request again to listen for next request`}</code></pre>
       </section>
     </>

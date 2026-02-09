@@ -1,11 +1,11 @@
 const faq = [
-  ['Does this call Claude in the demo?', 'No. The demo page intercepts bridge calls locally (mock bridge, no network or file writes).'],
+  ['Does this call the agent in the demo?', 'No. The demo page intercepts bridge calls locally (mock bridge, no network or file writes).'],
   ['What frameworks are supported?', 'React, Vue 2/3, Svelte, and vanilla. Component names + file paths are captured where available.'],
   ['How many elements can I select?', 'Up to 5 at once (multi-select mode). Hold Cmd/Ctrl to select multiple elements.'],
   ['How do undo/commits work?', 'On success, Eyeglass auto-commits with a tagged message [eyeglass:id]; the hub offers one-click undo via git revert.'],
   ['Can I disable auto-commit?', 'Yes, toggle it in the hub settings (gear icon). Setting persists in localStorage.'],
   ['Does the inspector run in production?', 'No. It only initializes when NODE_ENV !== "production" to keep your production bundle clean.'],
-  ['Can I use this without Claude Code?', 'The inspector works with any MCP-compatible agent. The bridge exposes standard MCP tools.'],
+  ['Can I use this without the agent?', 'The inspector works with any MCP-compatible agent. The bridge exposes standard MCP tools.'],
   ['What about SSR/Next.js?', 'Import in a client component or use dynamic imports with { ssr: false } to prevent server-side rendering issues.'],
 ]
 

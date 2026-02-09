@@ -127,8 +127,8 @@ export function Installation() {
         <p>Create <code>.claude/settings.json</code> in your project root:</p>
         <CodeBlock code={mcpConfigCode} language="json" />
 
-        <h3>4. Restart Claude Code</h3>
-        <p>Claude needs to be restarted to pick up the new MCP server configuration.</p>
+        <h3>4. Restart the agent</h3>
+        <p>the agent needs to be restarted to pick up the new MCP server configuration.</p>
       </section>
     </>
   )

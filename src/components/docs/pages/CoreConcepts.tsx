@@ -61,15 +61,15 @@ export function CoreConcepts() {
     <>
       <section className="docs-section" id="inspector">
         <h2>Inspector</h2>
-        <p>The Inspector is a browser-side web component that provides the visual interface for selecting elements and submitting requests to Claude.</p>
+        <p>The Inspector is a browser-side web component that provides the visual interface for selecting elements and submitting requests to the agent.</p>
 
         <h3>Features</h3>
         <ul>
           <li><strong>Hover Highlighting:</strong> See element boundaries and component names as you hover</li>
           <li><strong>Click to Select:</strong> Single-click to select an element</li>
           <li><strong>Multi-Select:</strong> Hold Cmd/Ctrl and click to select up to 5 elements</li>
-          <li><strong>Request Panel:</strong> Type your request and submit to Claude</li>
-          <li><strong>Activity Feed:</strong> Real-time updates on Claude's progress</li>
+          <li><strong>Request Panel:</strong> Type your request and submit to the agent</li>
+          <li><strong>Activity Feed:</strong> Real-time updates on the agent's progress</li>
           <li><strong>Settings:</strong> Toggle auto-commit and other preferences</li>
         </ul>
 
@@ -82,11 +82,11 @@ export function CoreConcepts() {
 
       <section className="docs-section" id="bridge">
         <h2>Bridge (MCP Server)</h2>
-        <p>The Bridge is an MCP (Model Context Protocol) server that connects your browser to Claude Code. It runs as a background process and handles communication between the inspector and Claude.</p>
+        <p>The Bridge is an MCP (Model Context Protocol) server that connects your browser to the agent. It runs as a background process and handles communication between the inspector and the agent.</p>
 
         <h3>What It Does</h3>
         <ul>
-          <li>Exposes MCP tools that Claude can call</li>
+          <li>Exposes MCP tools that the agent can call</li>
           <li>Stores element context from the inspector</li>
           <li>Manages request/response cycles via long-polling</li>
           <li>Handles Git operations (auto-commit, revert)</li>
@@ -94,13 +94,13 @@ export function CoreConcepts() {
         </ul>
 
         <h3>Starting the Bridge</h3>
-        <p>The bridge starts automatically when Claude Code initializes, as configured in <code>.claude/settings.json</code>:</p>
+        <p>The bridge starts automatically when the agent initializes, as configured in <code>.claude/settings.json</code>:</p>
         <CodeBlock code={mcpConfigCode} language="json" />
 
         <h3>Bridge Architecture</h3>
         <p>The bridge runs on two ports:</p>
         <ul>
-          <li><strong>MCP port:</strong> stdio-based communication with Claude</li>
+          <li><strong>MCP port:</strong> stdio-based communication with the agent</li>
           <li><strong>HTTP port (3939):</strong> REST API + SSE for browser communication</li>
         </ul>
       </section>
@@ -123,7 +123,7 @@ export function CoreConcepts() {
         </ul>
 
         <h3>Why This Matters</h3>
-        <p>With this context, Claude can:</p>
+        <p>With this context, the agent can:</p>
         <ul>
           <li>Find the exact file and component to edit</li>
           <li>Understand the element's purpose and current state</li>

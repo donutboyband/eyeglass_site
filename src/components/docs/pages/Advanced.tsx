@@ -111,11 +111,11 @@ export function Advanced() {
           <li>Try clearing localStorage and refreshing</li>
         </ol>
 
-        <h3>Claude Not Receiving Requests</h3>
+        <h3>the agent Not Receiving Requests</h3>
         <ol>
           <li>Verify <code>.claude/settings.json</code> exists with correct MCP config</li>
-          <li>Restart Claude Code to pick up config changes</li>
-          <li>Run <code>wait_for_request</code> in Claude to start listening</li>
+          <li>Restart the agent to pick up config changes</li>
+          <li>Run <code>wait_for_request</code> in the agent to start listening</li>
           <li>Check that the bridge is running (look for port 3939 in use)</li>
         </ol>
 
@@ -138,7 +138,7 @@ export function Advanced() {
           <li>Ensure your project is a Git repository (<code>git status</code> should work)</li>
           <li>Check that auto-commit is enabled in inspector settings (gear icon)</li>
           <li>Verify there are actual changes to commit (<code>git diff</code>)</li>
-          <li>Look for Git errors in the Claude Code terminal</li>
+          <li>Look for Git errors in the the agent terminal</li>
         </ol>
 
         <h3>Undo Button Not Working</h3>

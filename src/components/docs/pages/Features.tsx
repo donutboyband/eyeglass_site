@@ -63,8 +63,8 @@ export function Features() {
         <h3>How It Works</h3>
         <ol>
           <li>User submits a request via the inspector</li>
-          <li>Claude processes and makes code changes</li>
-          <li>Claude calls <code>update_status("success")</code></li>
+          <li>the agent processes and makes code changes</li>
+          <li>the agent calls <code>update_status("success")</code></li>
           <li>If auto-commit is enabled, Eyeglass automatically commits</li>
           <li>Commit message is tagged with the interaction ID</li>
         </ol>
@@ -73,7 +73,7 @@ export function Features() {
         <ul>
           <li>Your project must be a Git repository (<code>git init</code>)</li>
           <li>Git must be available in your PATH</li>
-          <li>There must be uncommitted changes when Claude completes a task</li>
+          <li>There must be uncommitted changes when the agent completes a task</li>
         </ul>
 
         <h3>Example Git History</h3>
@@ -85,11 +85,11 @@ export function Features() {
 
       <section className="docs-section" id="auto-commit">
         <h2>Auto-Commit</h2>
-        <p>When enabled, Eyeglass automatically commits changes after Claude successfully completes a request.</p>
+        <p>When enabled, Eyeglass automatically commits changes after the agent successfully completes a request.</p>
 
         <h3>How Auto-Commit Works</h3>
         <ol>
-          <li>Claude calls <code>update_status("success", "Changes complete")</code></li>
+          <li>the agent calls <code>update_status("success", "Changes complete")</code></li>
           <li>Bridge checks if auto-commit is enabled</li>
           <li>If enabled and there are changes: <code>git add -A</code></li>
           <li>Creates commit: <code>git commit -m "[eyeglass:&lt;id&gt;] &lt;message&gt;"</code></li>

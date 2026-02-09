@@ -54,7 +54,7 @@ export function Packages() {
 
       <section className="docs-section" id="bridge">
         <h2>@eyeglass/bridge</h2>
-        <p>MCP server that connects browser to Claude Code.</p>
+        <p>MCP server that connects browser to the agent.</p>
 
         <h3>Installation</h3>
         <p>Automatically configured by the CLI, but can be installed manually:</p>
@@ -73,7 +73,7 @@ export function Packages() {
 
         <h3>Architecture</h3>
         <ul>
-          <li><strong>MCP Server:</strong> stdio-based communication with Claude</li>
+          <li><strong>MCP Server:</strong> stdio-based communication with the agent</li>
           <li><strong>HTTP Server:</strong> REST API + Server-Sent Events (port 3939)</li>
           <li><strong>State Management:</strong> In-memory store for requests and interactions</li>
         </ul>
