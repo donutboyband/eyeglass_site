@@ -17,7 +17,7 @@ export function PayloadSection({ payload }: Props) {
     <section className="section payload" id="payload">
       <div className="section-header">
         <p className="section-label">Rich Context</p>
-        <h2>What Claude Code receives</h2>
+        <h2>What the agent receives</h2>
       </div>
       <div className="payload-grid">
         <div className="payload-text">
