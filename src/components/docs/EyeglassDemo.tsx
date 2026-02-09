@@ -1,41 +1,80 @@
 import { useState, useEffect } from 'react'
 
-type DemoPhase = 'idle' | 'selecting' | 'requesting' | 'fixing' | 'done'
+type DemoPhase = 'idle' | 'selecting' | 'typing' | 'pending' | 'fixing' | 'done'
+
+const WORKING_PHRASES = [
+  'Ruminating...',
+  'Grokking...',
+  'Synthesizing...',
+  'Forging...',
+]
 
 export function EyeglassDemo() {
   const [phase, setPhase] = useState<DemoPhase>('idle')
   const [buttonColor, setButtonColor] = useState('#6366f1')
+  const [typedText, setTypedText] = useState('')
+  const [workingPhrase, setWorkingPhrase] = useState(WORKING_PHRASES[0])
+  const fullRequest = 'make this green'
 
   useEffect(() => {
-    const runDemo = () => {
+    let cancelled = false
+
+    const typeText = async () => {
+      for (let i = 0; i <= fullRequest.length; i++) {
+        if (cancelled) return
+        setTypedText(fullRequest.slice(0, i))
+        await new Promise(r => setTimeout(r, 60))
+      }
+    }
+
+    const runDemo = async () => {
       // Reset
       setPhase('idle')
       setButtonColor('#6366f1')
+      setTypedText('')
+
+      await new Promise(r => setTimeout(r, 800))
+      if (cancelled) return
 
       // Select element
-      setTimeout(() => setPhase('selecting'), 1000)
+      setPhase('selecting')
+      await new Promise(r => setTimeout(r, 600))
+      if (cancelled) return
 
-      // Show request
-      setTimeout(() => setPhase('requesting'), 2000)
+      // Type request
+      setPhase('typing')
+      await typeText()
+      await new Promise(r => setTimeout(r, 400))
+      if (cancelled) return
 
-      // Fixing
-      setTimeout(() => setPhase('fixing'), 3500)
+      // Pending (sending)
+      setPhase('pending')
+      await new Promise(r => setTimeout(r, 800))
+      if (cancelled) return
 
-      // Done - change the button
-      setTimeout(() => {
-        setPhase('done')
-        setButtonColor('#22c55e')
-      }, 5000)
+      // Fixing with rotating phrases
+      setPhase('fixing')
+      setWorkingPhrase(WORKING_PHRASES[Math.floor(Math.random() * WORKING_PHRASES.length)])
+      await new Promise(r => setTimeout(r, 1200))
+      if (cancelled) return
 
-      // Loop after pause
-      setTimeout(runDemo, 7500)
+      // Done
+      setPhase('done')
+      setButtonColor('#10b981')
+      await new Promise(r => setTimeout(r, 2500))
+      if (cancelled) return
+
+      // Loop
+      runDemo()
     }
 
     runDemo()
+    return () => { cancelled = true }
   }, [])
 
   return (
     <div className="eyeglass-demo">
+      {/* Mock Browser */}
       <div className="demo-browser">
         <div className="demo-toolbar">
           <span className="demo-dot red" />
@@ -44,33 +83,78 @@ export function EyeglassDemo() {
           <span className="demo-url">localhost:5173</span>
         </div>
         <div className="demo-content">
-          <button
-            className={`demo-button ${phase === 'selecting' || phase === 'requesting' ? 'selected' : ''}`}
-            style={{ backgroundColor: buttonColor }}
-          >
-            Submit
-          </button>
+          <div className="demo-element-wrapper">
+            <button
+              className="demo-target-btn"
+              style={{ backgroundColor: buttonColor }}
+            >
+              Submit
+            </button>
+            {/* Highlight overlay */}
+            {(phase === 'selecting' || phase === 'typing' || phase === 'pending' || phase === 'fixing') && (
+              <div className="demo-highlight" />
+            )}
+          </div>
         </div>
       </div>
 
-      <div className="demo-overlay">
-        {phase === 'requesting' && (
-          <div className="demo-request">
-            <span className="demo-typing">make this green</span>
+      {/* Glass Panel (appears after selection) */}
+      {phase !== 'idle' && phase !== 'selecting' && (
+        <div className="demo-glass-panel">
+          <div className="demo-panel-header">
+            <span className="demo-component-tag">&lt;Button /&gt;</span>
+            <span className="demo-file-path">src/App.tsx</span>
           </div>
-        )}
-        {phase === 'fixing' && (
-          <div className="demo-status fixing">
-            <span className="demo-spinner" />
-            Fixing...
+
+          {/* Input or Request Display */}
+          {phase === 'typing' && (
+            <div className="demo-input-area">
+              <div className="demo-input-field">
+                {typedText}<span className="demo-cursor">|</span>
+              </div>
+            </div>
+          )}
+
+          {phase !== 'typing' && (
+            <div className="demo-user-request">
+              <div className="demo-request-label">Request</div>
+              <div className="demo-request-text">{fullRequest}</div>
+            </div>
+          )}
+
+          {/* Activity Feed */}
+          {(phase === 'fixing' || phase === 'done') && (
+            <div className="demo-activity-feed">
+              <div className="demo-activity-item">
+                <span className="demo-activity-icon action">📄</span>
+                <div className="demo-activity-content">
+                  <span className="demo-activity-text">Reading file</span>
+                  <span className="demo-activity-target">src/App.tsx</span>
+                </div>
+              </div>
+              {phase === 'done' && (
+                <div className="demo-activity-item">
+                  <span className="demo-activity-icon success">✓</span>
+                  <div className="demo-activity-content">
+                    <span className="demo-activity-text">Changed button color to green</span>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Status Footer */}
+          <div className={`demo-panel-footer ${phase === 'done' ? 'done' : ''}`}>
+            <span className={`demo-status-dot ${phase}`} />
+            <span className="demo-status-text">
+              {phase === 'pending' && 'Sending...'}
+              {phase === 'fixing' && workingPhrase}
+              {phase === 'done' && 'Done'}
+              {phase === 'typing' && 'Ready'}
+            </span>
           </div>
-        )}
-        {phase === 'done' && (
-          <div className="demo-status success">
-            ✓ Done
-          </div>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   )
 }
