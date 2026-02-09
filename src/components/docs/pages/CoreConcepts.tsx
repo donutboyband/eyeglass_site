@@ -138,9 +138,7 @@ export function CoreConcepts() {
 
         <h3>How to Multi-Select</h3>
         <ol>
-          <li>Hold <strong>Cmd</strong> (Mac) or <strong>Ctrl</strong> (Windows/Linux)</li>
           <li>Click each element you want to select</li>
-          <li>Release the modifier key when done</li>
           <li>Type your request referencing multiple elements</li>
         </ol>
 
