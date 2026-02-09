@@ -11,10 +11,15 @@ const AGENTS = ['Claude Code', 'Codex', 'Copilot']
 
 export function HeroSection({ installCommand, copied, onCopy }: Props) {
   const [agentIndex, setAgentIndex] = useState(0)
+  const [isFlipping, setIsFlipping] = useState(false)
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setAgentIndex((prev) => (prev + 1) % AGENTS.length)
+      setIsFlipping(true)
+      setTimeout(() => {
+        setAgentIndex((prev) => (prev + 1) % AGENTS.length)
+        setIsFlipping(false)
+      }, 300) // Change content at midpoint of animation
     }, 2000)
     return () => clearInterval(interval)
   }, [])
@@ -23,7 +28,7 @@ export function HeroSection({ installCommand, copied, onCopy }: Props) {
     <section className="hero">
       <div className="hero-content">
         <p className="hero-kicker">
-          For <span key={agentIndex} className="agent-flip">{AGENTS[agentIndex]}</span>.
+          For <span className={`agent-flip ${isFlipping ? 'flipping' : ''}`}>{AGENTS[agentIndex]}</span>.
         </p>
         <h1 className="hero-headline">
           <span className="highlight">

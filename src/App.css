@@ -136,6 +136,12 @@
 
 .agent-flip {
   display: inline-block;
+  min-width: 6.2em;
+  text-align: center;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.agent-flip.flipping {
   animation: flip 0.6s ease-in-out;
 }
 
