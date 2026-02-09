@@ -83,8 +83,8 @@ function LandingPage({
         copied={copied}
         onCopy={onCopy}
       />
-      <QuickstartSection items={QUICKSTART} />
       <DemoSection />
+      <QuickstartSection items={QUICKSTART} />
       <PayloadSection payload={payload} />
       <PackagesSection packages={PACKAGES} />
       <FrameworksSection frameworks={FRAMEWORKS} />
