@@ -141,12 +141,28 @@
   margin-bottom: 1.3rem;
 }
 
+.hero-headline {
+  font-size: 4.5rem;
+  letter-spacing: -0.03em;
+}
+
 .hero h1 .highlight {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   background: linear-gradient(135deg, #a855f7, #6366f1, #22c55e);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+.hand-arrow {
+  width: 100px;
+  height: 36px;
+  color: #6366f1;
+  -webkit-text-fill-color: initial;
+  flex-shrink: 0;
 }
 
 .hero-subtitle {
