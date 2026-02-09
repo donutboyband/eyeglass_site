@@ -31,8 +31,8 @@ export function PackagesSection({ packages }: Props) {
           <p>Inspector runs in-browser; bridge stays on your machine. Demo mode never leaves this page.</p>
         </div>
         <div className="trust-card">
-          <h4>Claude Code native</h4>
-          <p>Uses MCP to deliver context and receive edits. Works with Claude Code out of the box.</p>
+          <h4>Agent-agnostic</h4>
+          <p>Uses MCP or HTTP to deliver context and receive edits. Works with any AI coding agent.</p>
         </div>
       </div>
     </section>
