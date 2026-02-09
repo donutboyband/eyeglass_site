@@ -81,27 +81,39 @@ export function CoreConcepts() {
       </section>
 
       <section className="docs-section" id="bridge">
-        <h2>Bridge (MCP Server)</h2>
-        <p>The Bridge is an MCP (Model Context Protocol) server that connects your browser to the agent. It runs as a background process and handles communication between the inspector and the agent.</p>
+        <h2>Bridge (MCP or HTTP Server)</h2>
+        <p>The Bridge connects your browser to AI coding agents. It can run as an MCP (Model Context Protocol) server for agents like the agent Code, or as an HTTP server for agents like Codex and Copilot.</p>
 
         <h3>What It Does</h3>
         <ul>
-          <li>Exposes MCP tools that the agent can call</li>
+          <li>Exposes tools via MCP or HTTP endpoints</li>
           <li>Stores element context from the inspector</li>
           <li>Manages request/response cycles via long-polling</li>
           <li>Handles Git operations (auto-commit, revert)</li>
           <li>Streams real-time updates via Server-Sent Events</li>
         </ul>
 
-        <h3>Starting the Bridge</h3>
-        <p>The bridge starts automatically when the agent initializes, as configured in <code>.claude/settings.json</code>:</p>
+        <h3>MCP Mode (Default)</h3>
+        <p>For agents that support MCP, the bridge starts automatically when the agent initializes, as configured in <code>.claude/settings.json</code>:</p>
         <CodeBlock code={mcpConfigCode} language="json" />
+        
+        <h3>HTTP Mode</h3>
+        <p>For agents like Codex or Copilot, run the bridge as an HTTP server on port 3300:</p>
+        <CodeBlock code="npx eyeglass-bridge --http" language="bash" />
+        <p>The HTTP server provides the same functionality via REST endpoints:</p>
+        <ul>
+          <li><code>GET /api/wait</code> - Wait for new focus request (long-polling)</li>
+          <li><code>POST /api/status</code> - Update browser status (fixing, success, etc.)</li>
+          <li><code>POST /focus</code> - Browser posts element selections</li>
+          <li><code>GET /sse</code> - Server-sent events stream for real-time updates</li>
+        </ul>
 
         <h3>Bridge Architecture</h3>
         <p>The bridge runs on two ports:</p>
         <ul>
-          <li><strong>MCP port:</strong> stdio-based communication with the agent</li>
-          <li><strong>HTTP port (3939):</strong> REST API + SSE for browser communication</li>
+          <li><strong>MCP mode:</strong> stdio-based communication with the agent</li>
+          <li><strong>HTTP mode (3300):</strong> REST API + SSE for both agent and browser communication</li>
+          <li><strong>Browser port (3939):</strong> REST API + SSE for browser communication (both modes)</li>
         </ul>
       </section>
 
