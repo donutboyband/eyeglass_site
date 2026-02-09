@@ -11,24 +11,41 @@ const AGENTS = ['Claude Code', 'Codex', 'Copilot']
 
 export function HeroSection({ installCommand, copied, onCopy }: Props) {
   const [agentIndex, setAgentIndex] = useState(0)
-  const [isFlipping, setIsFlipping] = useState(false)
+  const [displayText, setDisplayText] = useState('')
+  const [isTyping, setIsTyping] = useState(true)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setIsFlipping(true)
-      setTimeout(() => {
-        setAgentIndex((prev) => (prev + 1) % AGENTS.length)
-        setIsFlipping(false)
-      }, 300) // Change content at midpoint of animation
-    }, 2000)
-    return () => clearInterval(interval)
-  }, [])
+    const currentAgent = AGENTS[agentIndex]
+    let charIndex = isTyping ? displayText.length : displayText.length - 1
+    
+    const timeout = setTimeout(() => {
+      if (isTyping) {
+        if (charIndex < currentAgent.length) {
+          setDisplayText(currentAgent.slice(0, charIndex + 1))
+        } else {
+          // Finished typing, wait then start untyping
+          setTimeout(() => setIsTyping(false), 1000)
+        }
+      } else {
+        if (charIndex > 0) {
+          setDisplayText(currentAgent.slice(0, charIndex))
+        } else {
+          // Finished untyping, move to next agent
+          setAgentIndex((prev) => (prev + 1) % AGENTS.length)
+          setIsTyping(true)
+          setDisplayText('')
+        }
+      }
+    }, isTyping ? 100 : 50)
+
+    return () => clearTimeout(timeout)
+  }, [agentIndex, displayText, isTyping])
 
   return (
     <section className="hero">
       <div className="hero-content">
         <p className="hero-kicker">
-          For <span className={`agent-flip ${isFlipping ? 'flipping' : ''}`}>{AGENTS[agentIndex]}</span>.
+          For <span className="agent-typewriter">{displayText}<span className="cursor">|</span></span>.
         </p>
         <h1 className="hero-headline">
           <span className="highlight">
