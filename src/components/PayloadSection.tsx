@@ -1,8 +1,18 @@
-import { highlightJson } from '../utils/highlightJson'
+import { useEffect, useRef } from 'react'
+import Prism from 'prismjs'
+import 'prismjs/components/prism-json'
 
 type Props = { payload: string }
 
 export function PayloadSection({ payload }: Props) {
+  const codeRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    if (codeRef.current) {
+      Prism.highlightElement(codeRef.current)
+    }
+  }, [payload])
+
   return (
     <section className="section payload" id="payload">
       <div className="section-header">
@@ -22,12 +32,10 @@ export function PayloadSection({ payload }: Props) {
             <span className="chip">Computed styles</span>
           </div>
         </div>
-        <pre className="payload-code">
-          <code
-            dangerouslySetInnerHTML={{
-              __html: highlightJson(payload),
-            }}
-          />
+        <pre className="payload-code language-json">
+          <code ref={codeRef} className="language-json">
+            {payload}
+          </code>
         </pre>
       </div>
     </section>
