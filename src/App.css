@@ -1779,7 +1779,7 @@
 
 .copy-code-btn {
   position: absolute;
-  top: 50%; transform: translateY(-50%);
+  top: 8px;
   right: 8px;
   display: flex;
   align-items: center;
