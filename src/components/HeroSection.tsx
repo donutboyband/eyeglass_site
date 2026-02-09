@@ -16,7 +16,7 @@ export function HeroSection({ installCommand, copied, onCopy }: Props) {
 
   useEffect(() => {
     const currentAgent = AGENTS[agentIndex]
-    let charIndex = isTyping ? displayText.length : displayText.length - 1
+    const charIndex = isTyping ? displayText.length : displayText.length - 1
     
     const timeout = setTimeout(() => {
       if (isTyping) {
