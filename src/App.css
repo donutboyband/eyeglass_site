@@ -319,19 +319,28 @@
 .install code { color: var(--color-accent); }
 
 .copy-btn {
-  padding: 0.45rem;
-  background: transparent;
-  border: none;
-  color: var(--color-text-muted);
-  cursor: pointer;
-  border-radius: 6px;
-  transition: all 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  opacity: 0.7;
 }
 
-.copy-btn:hover { background: var(--color-border); color: var(--color-text); }
+.copy-btn:hover {
+  opacity: 1;
+  background: var(--color-bg);
+}
+
+.copy-btn svg {
+  width: 16px;
+  height: 16px;
+}
 
 .hero-note {
   font-size: 0.95rem;
