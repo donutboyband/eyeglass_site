@@ -43,7 +43,7 @@ const PACKAGES = [
   {
     name: "@eyeglass/bridge",
     tag: "MCP",
-    desc: "Claude Code server that receives snapshots + patches files.",
+    desc: "MCP or HTTP server that receives snapshots + patches files.",
   },
   {
     name: "@eyeglass/cli",
