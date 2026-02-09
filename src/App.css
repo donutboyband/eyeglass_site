@@ -629,13 +629,10 @@
 /* Eyeglass Demo */
 .eyeglass-demo {
   position: relative;
-  display: flex;
-  gap: 1rem;
   margin: 2rem 0;
 }
 
 .demo-browser {
-  flex: 1;
   background: var(--color-bg-subtle);
   border: 1px solid var(--color-border);
   border-radius: 12px;
@@ -708,7 +705,10 @@
 
 /* Glass Panel */
 .demo-glass-panel {
-  width: 260px;
+  position: absolute;
+  top: 50px;
+  right: 16px;
+  width: 240px;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(0, 0, 0, 0.12);
@@ -717,6 +717,7 @@
   overflow: hidden;
   animation: panelIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   font-size: 13px;
+  z-index: 10;
 }
 
 :root[data-theme='dark'] .demo-glass-panel {
@@ -917,12 +918,10 @@
   font-weight: 500;
 }
 
-@media (max-width: 700px) {
-  .eyeglass-demo {
-    flex-direction: column;
-  }
+@media (max-width: 600px) {
   .demo-glass-panel {
-    width: 100%;
+    width: 200px;
+    right: 8px;
   }
 }
 
