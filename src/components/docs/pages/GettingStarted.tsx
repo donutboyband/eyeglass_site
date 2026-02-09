@@ -1,8 +1,18 @@
 import { EyeglassDemo } from '../EyeglassDemo'
+import { CopyIcon, CheckIcon } from '../../Icons'
+import { useState } from 'react'
 
 const installCommand = 'npx @eyeglass/cli init'
 
 export function GettingStarted() {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(installCommand)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 2000)
+  }
+
   return (
     <>
       <div className="docs-hero">
@@ -11,7 +21,12 @@ export function GettingStarted() {
         <p className="hero-subtitle">Visual debugging for AI coding agents. Point at UI elements, describe what you want, and let the agent edit with full context.</p>
         <div className="hero-actions minimal" style={{ justifyContent: 'flex-start' }}>
           <a className="link-arrow" href="#quickstart">Get Started →</a>
-          <code className="install minimal">{installCommand}</code>
+          <div className="install minimal">
+            <code>{installCommand}</code>
+            <button className="copy-btn" onClick={handleCopy} title="Copy to clipboard">
+              {copied ? <CheckIcon /> : <CopyIcon />}
+            </button>
+          </div>
         </div>
       </div>
 
