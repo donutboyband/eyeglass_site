@@ -1803,3 +1803,17 @@
   width: 16px;
   height: 16px;
 }
+
+/* Docs logo */
+.docs-logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.docs-hero h1 {
+  display: flex;
+  align-items: center;
+}

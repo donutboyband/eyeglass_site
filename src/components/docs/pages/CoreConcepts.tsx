@@ -80,7 +80,7 @@ export function CoreConcepts() {
         </ul>
 
         <h3>Activation</h3>
-        <p>The inspector appears as a small eyeglass icon in the bottom-right corner of your browser. Click it to activate selection mode. Once activated, your cursor changes to indicate inspector mode is active.</p>
+        <p>The inspector appears as a small eyeglass icon in the bottom-left corner of your browser. Click it to activate selection mode. Once activated, your cursor changes to indicate inspector mode is active.</p>
 
         <h3>Development Only</h3>
         <p>The inspector only initializes when <code>NODE_ENV !== 'production'</code> or <code>process.env.NODE_ENV !== 'production'</code>, keeping your production bundle clean and secure.</p>
