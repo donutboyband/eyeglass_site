@@ -22,7 +22,7 @@ export function GettingStarted() {
           <img src="/eyeglass.svg" alt="Eyeglass" className="docs-logo" />
           Eyeglass Documentation
         </h1>
-        <p className="hero-subtitle">Visual debugging for AI coding agents. Point at UI elements, describe what you want, and let the agent edit with full context.</p>
+        <p className="hero-subtitle">Visual debugging for AI coding agents. Point at UI elements, describe what you want, and let the agent edit with full context. This site was built with eyeglass.</p>
         <div className="hero-actions minimal" style={{ justifyContent: 'flex-start' }}>
           <a className="link-arrow" href="#quickstart">Get Started →</a>
           <div className="install minimal">
