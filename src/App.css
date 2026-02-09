@@ -67,6 +67,23 @@
   color: var(--color-text);
 }
 
+.nav-link.active {
+  color: var(--color-primary);
+}
+
+.nav-mobile {
+  display: none;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.icon-only {
+  padding: 0.5rem;
+  width: 38px;
+  height: 38px;
+  justify-content: center;
+}
+
 .github-link {
   display: flex;
   align-items: center;
@@ -486,10 +503,208 @@
   font-size: 0.875rem;
 }
 
+/* Docs Layout */
+.docs-layout {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 3rem;
+  align-items: start;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 6rem 2rem 4rem;
+}
+
+.docs-rail {
+  position: sticky;
+  top: 80px;
+  align-self: start;
+  max-height: calc(100vh - 100px);
+  overflow-y: auto;
+}
+
+.docs-nav {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.docs-nav-title {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.docs-nav details {
+  margin-bottom: 0.25rem;
+}
+
+.docs-nav summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text);
+  padding: 0.35rem 0;
+  list-style: none;
+}
+
+.docs-nav summary::-webkit-details-marker {
+  display: none;
+}
+
+.docs-nav summary::before {
+  content: '+';
+  display: inline-block;
+  width: 1rem;
+  color: var(--color-text-subtle);
+  font-weight: 400;
+}
+
+.docs-nav details[open] summary::before {
+  content: '-';
+}
+
+.docs-nav a {
+  display: block;
+  padding: 0.3rem 0 0.3rem 1rem;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  border-left: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.docs-nav a:hover {
+  color: var(--color-text);
+}
+
+.docs-nav a.active {
+  color: var(--color-primary);
+  border-left-color: var(--color-primary);
+}
+
+.docs-content {
+  max-width: 800px;
+  min-width: 0;
+}
+
+.docs-hero {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.docs-section {
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.docs-section:last-child {
+  border-bottom: none;
+}
+
+.docs-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.docs-section h3 {
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.docs-section p {
+  margin-bottom: 0.75rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+}
+
+.docs-section ul,
+.docs-section ol {
+  margin-left: 1.25rem;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+}
+
+.docs-section li {
+  margin-bottom: 0.4rem;
+  line-height: 1.6;
+}
+
+.docs-section pre {
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 1rem;
+  overflow: auto;
+  margin-bottom: 1rem;
+}
+
+.docs-section code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9em;
+}
+
+.docs-section :not(pre) > code {
+  background: var(--color-bg-muted);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  color: var(--color-text);
+}
+
+.docs-section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.docs-table {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.docs-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.docs-row:last-child {
+  border-bottom: none;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.9rem;
+  color: var(--color-primary);
+}
+
+.faq-list {
+  list-style: none;
+  margin-left: 0;
+}
+
+.faq-list li {
+  margin-bottom: 1rem;
+}
+
+.faq-list p {
+  margin: 0.2rem 0 0;
+  color: var(--color-text-muted);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .nav-links {
     display: none;
+  }
+
+  .nav-mobile {
+    display: flex;
   }
 
   .hero {
@@ -510,13 +725,48 @@
     padding: 4rem 1.5rem;
   }
 
-  .workflow-step {
+  .payload-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
   }
 
-  .step-number {
-    width: 40px;
-    height: 40px;
+  .docs-layout {
+    grid-template-columns: 1fr;
+    padding: 5.5rem 1.25rem 3rem;
+    gap: 1.5rem;
+  }
+
+  .docs-rail {
+    position: static;
+    max-height: none;
+    overflow: visible;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .docs-nav details {
+    display: inline-block;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .docs-nav summary {
+    padding: 0.5rem 0.75rem;
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    font-size: 0.85rem;
+  }
+
+  .docs-nav summary::before {
+    display: none;
+  }
+
+  .docs-nav details[open] {
+    display: block;
+  }
+
+  .docs-nav a {
+    padding: 0.4rem 0.75rem;
+    border-left: none;
   }
 }

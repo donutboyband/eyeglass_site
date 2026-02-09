@@ -90,6 +90,7 @@ window.fetch = async (input, init) => {
       try {
         const payload = JSON.parse(bodyText);
         scheduleDemoFlow(payload.interactionId, payload.userNote ?? 'demo request');
+        window.dispatchEvent(new CustomEvent('eyeglass-mock-request', { detail: payload }));
       } catch {
         // ignore parse issues
       }
