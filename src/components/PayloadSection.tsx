@@ -22,7 +22,8 @@ export function PayloadSection({ payload }: Props) {
       <div className="payload-grid">
         <div className="payload-text">
           <p>
-            This is the JSON the agent gets.
+            Inspector captures component + props + styles + a11y in one
+            semantic snapshot. This is the JSON the agent gets.
           </p>
           <div className="chips">
             <span className="chip">Component + file path</span>
