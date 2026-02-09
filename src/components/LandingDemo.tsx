@@ -28,7 +28,6 @@ export function LandingDemo() {
   const [cardStyle, setCardStyle] = useState({
     bg: '#f8fafc',
     border: '#e2e8f0',
-    btnBg: '#6366f1',
   })
   const [typedText, setTypedText] = useState('')
   const [activities, setActivities] = useState<ActivityItem[]>([])
@@ -53,7 +52,7 @@ export function LandingDemo() {
     const runDemo = async () => {
       // Reset
       setPhase('idle')
-      setCardStyle({ bg: '#f8fafc', border: '#e2e8f0', btnBg: '#6366f1' })
+      setCardStyle({ bg: '#f8fafc', border: '#e2e8f0' })
       setTypedText('')
       setActivities([])
 
@@ -99,7 +98,7 @@ export function LandingDemo() {
       await new Promise(r => setTimeout(r, 600))
 
       // Animate the style change
-      setCardStyle({ bg: '#1e293b', border: '#334155', btnBg: '#22c55e' })
+      setCardStyle({ bg: '#1e293b', border: '#334155' })
       await new Promise(r => setTimeout(r, 600))
       if (cancelled) return
 
@@ -117,14 +116,16 @@ export function LandingDemo() {
     return () => { cancelled = true }
   }, [])
 
-  const isSelected = (card: 1 | 2) => {
-    if (phase === 'selecting' && card === 1) return true
-    if (phase === 'multi-select' && (card === 1 || card === 2)) return true
-    if (['typing', 'pending', 'thinking', 'reading', 'writing'].includes(phase)) return true
-    return false
+  const getSelectionState = (card: 1 | 2) => {
+    if (phase === 'selecting' && card === 1) return 1
+    if (phase === 'multi-select') return card
+    if (['typing', 'pending', 'thinking', 'reading', 'writing'].includes(phase)) return card
+    return 0
   }
 
-  const showPanel = !['idle', 'selecting', 'multi-select'].includes(phase)
+  const showPanel = !['idle', 'selecting'].includes(phase)
+  const isInputMode = ['multi-select', 'typing'].includes(phase)
+  const isActivityMode = ['pending', 'thinking', 'reading', 'writing', 'done'].includes(phase)
 
   return (
     <div className="landing-demo">
@@ -140,25 +141,29 @@ export function LandingDemo() {
           {/* Mock card UI */}
           <div className="landing-demo-cards">
             <div
-              className={`landing-demo-card ${isSelected(1) ? 'selected' : ''}`}
+              className={`landing-demo-card ${getSelectionState(1) ? 'selected' : ''}`}
+              data-selection={getSelectionState(1) || undefined}
               style={{
                 backgroundColor: cardStyle.bg,
                 borderColor: cardStyle.border,
                 color: cardStyle.bg === '#1e293b' ? '#f1f5f9' : '#334155'
               }}
             >
+              {getSelectionState(1) > 0 && <span className="selection-badge">{getSelectionState(1)}</span>}
               <div className="card-title">Analytics</div>
               <div className="card-value" style={{ color: cardStyle.bg === '#1e293b' ? '#fff' : '#0f172a' }}>2,847</div>
               <div className="card-label">Page views today</div>
             </div>
             <div
-              className={`landing-demo-card ${isSelected(2) ? 'selected' : ''}`}
+              className={`landing-demo-card ${getSelectionState(2) ? 'selected' : ''}`}
+              data-selection={getSelectionState(2) || undefined}
               style={{
                 backgroundColor: cardStyle.bg,
                 borderColor: cardStyle.border,
                 color: cardStyle.bg === '#1e293b' ? '#f1f5f9' : '#334155'
               }}
             >
+              {getSelectionState(2) > 0 && <span className="selection-badge green">{getSelectionState(2)}</span>}
               <div className="card-title">Revenue</div>
               <div className="card-value" style={{ color: cardStyle.bg === '#1e293b' ? '#fff' : '#0f172a' }}>$12,430</div>
               <div className="card-label">This month</div>
@@ -170,69 +175,79 @@ export function LandingDemo() {
       {/* Glass Panel */}
       {showPanel && (
         <div className="landing-demo-panel">
-          <div className="demo-panel-header">
-            <span className="demo-component-tag">&lt;Card /&gt; ×2</span>
-            <span className="demo-file-path">src/components/Card.tsx</span>
-            <button className="demo-close-btn">×</button>
+          {/* Header */}
+          <div className="inspector-header">
+            <span className="inspector-tag">&lt;Card /&gt;</span>
+            <button className="inspector-multi-btn active">+</button>
+            <button className="inspector-close-btn">×</button>
           </div>
 
-          {/* Input or Request Display */}
-          {phase === 'typing' && (
-            <div className="demo-input-area">
-              <div className="demo-input-field">
-                {typedText}<span className="demo-cursor">|</span>
-              </div>
-            </div>
-          )}
-
-          {phase !== 'typing' && (
-            <div className="demo-user-request">
-              <div className="demo-request-label">Request</div>
-              <div className="demo-request-text">{fullRequest}</div>
-            </div>
-          )}
-
-          {/* Activity Feed */}
-          {activities.length > 0 && (
-            <div className="demo-activity-feed">
-              {activities.map((item, idx) => (
-                <div key={idx} className="demo-activity-item">
-                  <span className={`demo-activity-icon ${item.type}`}>
-                    {item.type === 'thought' && '💭'}
-                    {item.type === 'action' && '📄'}
-                    {item.type === 'success' && '✓'}
-                  </span>
-                  <div className="demo-activity-content">
-                    <span className={`demo-activity-text ${item.type === 'thought' ? 'muted' : ''}`}>
-                      {item.text}
-                    </span>
-                    {item.target && (
-                      <span className="demo-activity-target">{item.target}</span>
-                    )}
-                  </div>
+          {/* Multi-select mode UI */}
+          {isInputMode && (
+            <>
+              <div className="inspector-hint">Click elements to add/remove from selection (max 5)</div>
+              <div className="inspector-selected">
+                <div className="selected-label">2 elements selected</div>
+                <div className="selected-chips">
+                  <span className="selected-chip"><span className="chip-badge">1</span> Card ×</span>
+                  <span className="selected-chip green"><span className="chip-badge green">2</span> Card ×</span>
                 </div>
-              ))}
-            </div>
+              </div>
+              <div className="inspector-input-area">
+                <input
+                  type="text"
+                  className="inspector-input"
+                  placeholder="Describe what to change for these elements.."
+                  value={typedText}
+                  readOnly
+                />
+                <div className="inspector-buttons">
+                  <button className="inspector-btn secondary">Cancel</button>
+                  <button className="inspector-btn primary">Send</button>
+                </div>
+              </div>
+            </>
           )}
 
-          {/* Status Footer */}
-          <div className={`demo-panel-footer ${phase === 'done' ? 'done' : ''}`}>
-            <span className={`demo-status-dot ${phase}`} />
-            <span className="demo-status-text">
-              {phase === 'pending' && 'Sending...'}
-              {phase === 'thinking' && WORKING_PHRASES[0]}
-              {phase === 'reading' && 'Reading...'}
-              {phase === 'writing' && 'Editing...'}
-              {phase === 'done' && 'Done'}
-              {phase === 'typing' && 'Ready'}
-            </span>
-          </div>
+          {/* Activity mode UI */}
+          {isActivityMode && (
+            <>
+              <div className="inspector-request">
+                <div className="request-label">Your request</div>
+                <div className="request-text">{fullRequest}</div>
+              </div>
+              <div className="inspector-activity-feed">
+                {activities.map((item, idx) => (
+                  <div key={idx} className="inspector-activity-item">
+                    <span className={`inspector-activity-icon ${item.type}`}>
+                      {item.type === 'thought' && '💭'}
+                      {item.type === 'action' && '📄'}
+                      {item.type === 'success' && '✓'}
+                    </span>
+                    <div className="inspector-activity-content">
+                      <span className={`inspector-activity-text ${item.type === 'thought' ? 'muted' : ''}`}>
+                        {item.text}
+                      </span>
+                      {item.target && (
+                        <span className="inspector-activity-target">{item.target}</span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className={`inspector-footer ${phase === 'done' ? 'done' : ''}`}>
+                <span className={`inspector-status-dot ${phase}`} />
+                <span className="inspector-status-text">
+                  {phase === 'pending' && 'Sending...'}
+                  {phase === 'thinking' && WORKING_PHRASES[0]}
+                  {phase === 'reading' && 'Reading...'}
+                  {phase === 'writing' && 'Editing...'}
+                  {phase === 'done' && 'Done'}
+                </span>
+              </div>
+            </>
+          )}
         </div>
-      )}
-
-      {/* Selection indicator */}
-      {(phase === 'multi-select') && (
-        <div className="landing-demo-hint">Multi-select: 2 elements</div>
       )}
     </div>
   )
