@@ -7,7 +7,8 @@ export function FrameworksSection({ frameworks }: Props) {
     <section className="section" id="frameworks">
       <div className="section-header">
         <p className="section-label">Framework coverage</p>
-        <h2>Understands your stack</h2>
+        <h2>Works with your stack</h2>
+        <p className="section-note">Supports popular frameworks and always adding more.</p>
       </div>
       <div className="frameworks-grid">
         {frameworks.map((fw) => (
