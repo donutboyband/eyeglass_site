@@ -37,6 +37,7 @@ const navGroups = [
       ['/docs/mcp#update-status', 'update_status'],
       ['/docs/mcp#send-thought', 'send_thought'],
       ['/docs/mcp#wait-for-request', 'wait_for_request'],
+      ['/docs/mcp#http-endpoints', 'HTTP Endpoints'],
     ],
   },
   {
