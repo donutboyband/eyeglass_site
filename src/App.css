@@ -639,6 +639,12 @@
   margin-bottom: 2rem;
 }
 
+.docs-hero .hero-subtitle {
+  /* Align docs hero copy with heading/CTA instead of centering */
+  text-align: left;
+  margin: 0 0 2.4rem;
+}
+
 .docs-section {
   margin-bottom: 2rem;
   padding-bottom: 2rem;

@@ -1,4 +1,5 @@
 import { CopyIcon, CheckIcon } from './Icons'
+import { useState, useEffect } from 'react'
 
 type Props = {
   installCommand: string
@@ -6,12 +7,23 @@ type Props = {
   onCopy: () => void
 }
 
+const AGENTS = ['Claude Code', 'Codex', 'Copilot']
+
 export function HeroSection({ installCommand, copied, onCopy }: Props) {
+  const [agentIndex, setAgentIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setAgentIndex((prev) => (prev + 1) % AGENTS.length)
+    }, 2000)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <section className="hero">
       <div className="hero-content">
         <p className="hero-kicker">
-          For Claude Code.
+          For {AGENTS[agentIndex]}.
         </p>
         <h1 className="hero-headline">
           <span className="highlight">
