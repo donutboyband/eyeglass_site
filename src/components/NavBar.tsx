@@ -18,7 +18,25 @@ export function NavBar({ theme, toggleTheme }: Props) {
           <span>eyeglass</span>
         </Link>
         <div className="nav-links">
-          <Link to="/docs" className={`nav-link${isDocsPage ? ' active' : ''}`}>Docs</Link>
+          <Link to="/docs" className={`nav-link${isDocsPage ? ' active' : ''}`}>
+            <svg className="hand-arrow" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M4 20C20 22 40 18 60 20C80 22 95 18 110 20"
+                stroke="currentColor"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M95 12C100 16 105 18 110 20C105 22 100 24 95 28"
+                stroke="currentColor"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            Docs
+          </Link>
           <a
             href="https://github.com/donutboyband/eyeglass"
             target="_blank"
@@ -37,7 +55,25 @@ export function NavBar({ theme, toggleTheme }: Props) {
           </button>
         </div>
         <div className="nav-mobile">
-          <Link to="/docs" className={`nav-link${isDocsPage ? ' active' : ''}`}>Docs</Link>
+          <Link to="/docs" className={`nav-link${isDocsPage ? ' active' : ''}`}>
+            <svg className="hand-arrow" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M4 20C20 22 40 18 60 20C80 22 95 18 110 20"
+                stroke="currentColor"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M95 12C100 16 105 18 110 20C105 22 100 24 95 28"
+                stroke="currentColor"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            Docs
+          </Link>
           <a
             href="https://github.com/donutboyband/eyeglass"
             target="_blank"
