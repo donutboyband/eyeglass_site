@@ -61,28 +61,34 @@ export function CoreConcepts() {
     <>
       <section className="docs-section" id="inspector">
         <h2>Inspector</h2>
-        <p>The Inspector is a browser-side web component that provides the visual interface for selecting elements and submitting requests to the agent.</p>
+        <p>The Inspector is a browser-side web component that provides the visual interface for selecting elements and submitting requests to the agent. It auto-initializes when imported and runs only in development mode.</p>
+
+        <h3>Installation</h3>
+        <p>Import in your app's entry file:</p>
+        <CodeBlock code={`// src/main.tsx (Vite) or app/layout.tsx (Next.js)\nimport '@eyeglass/inspector';`} language="typescript" />
 
         <h3>Features</h3>
         <ul>
           <li><strong>Hover Highlighting:</strong> See element boundaries and component names as you hover</li>
-          <li><strong>Click to Select:</strong> Single-click to select an element</li>
+          <li><strong>Click to Select:</strong> Single-click to select an element and open the request panel</li>
           <li><strong>Multi-Select:</strong> Hold Cmd/Ctrl and click to select up to 5 elements</li>
+          <li><strong>Framework Detection:</strong> Automatically detects React, Vue, and Svelte component names and file paths</li>
           <li><strong>Request Panel:</strong> Type your request and submit to the agent</li>
-          <li><strong>Activity Feed:</strong> Real-time updates on the agent's progress</li>
-          <li><strong>Settings:</strong> Toggle auto-commit and other preferences</li>
+          <li><strong>Activity Feed:</strong> Real-time updates on the agent's progress via Server-Sent Events</li>
+          <li><strong>Settings:</strong> Toggle auto-commit, change bridge URL, and other preferences</li>
+          <li><strong>One-Click Undo:</strong> Revert changes directly from the inspector</li>
         </ul>
 
         <h3>Activation</h3>
-        <p>The inspector appears as a small icon in the bottom-right corner of your browser. Click it to activate selection mode.</p>
+        <p>The inspector appears as a small eyeglass icon in the bottom-right corner of your browser. Click it to activate selection mode. Once activated, your cursor changes to indicate inspector mode is active.</p>
 
         <h3>Development Only</h3>
-        <p>The inspector only initializes when <code>NODE_ENV !== 'production'</code>, keeping your production bundle clean and secure.</p>
+        <p>The inspector only initializes when <code>NODE_ENV !== 'production'</code> or <code>process.env.NODE_ENV !== 'production'</code>, keeping your production bundle clean and secure.</p>
       </section>
 
       <section className="docs-section" id="bridge">
         <h2>Bridge (MCP or HTTP Server)</h2>
-        <p>The Bridge connects your browser to AI coding agents. It can run as an MCP (Model Context Protocol) server for agents like the agent Code, or as an HTTP server for agents like Codex and Copilot.</p>
+        <p>The Bridge connects your browser to AI coding agents. It can run as an MCP (Model Context Protocol) server for agents like Claude Code, or as an HTTP server for agents like Codex.</p>
 
         <h3>What It Does</h3>
         <ul>
