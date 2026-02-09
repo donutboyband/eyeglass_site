@@ -163,7 +163,7 @@ export function LandingDemo() {
                 color: cardStyle.bg === '#1e293b' ? '#f1f5f9' : '#334155'
               }}
             >
-              {getSelectionState(2) > 0 && <span className="selection-badge green">{getSelectionState(2)}</span>}
+              {getSelectionState(2) > 0 && <span className="selection-badge">{getSelectionState(2)}</span>}
               <div className="card-title">Revenue</div>
               <div className="card-value" style={{ color: cardStyle.bg === '#1e293b' ? '#fff' : '#0f172a' }}>$12,430</div>
               <div className="card-label">This month</div>
@@ -190,7 +190,7 @@ export function LandingDemo() {
                 <div className="selected-label">2 elements selected</div>
                 <div className="selected-chips">
                   <span className="selected-chip"><span className="chip-badge">1</span> Card ×</span>
-                  <span className="selected-chip green"><span className="chip-badge green">2</span> Card ×</span>
+                  <span className="selected-chip"><span className="chip-badge">2</span> Card ×</span>
                 </div>
               </div>
               <div className="inspector-input-area">

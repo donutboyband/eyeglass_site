@@ -982,10 +982,6 @@
   animation: highlightPulse 0.15s ease-out;
 }
 
-.landing-demo-card[data-selection="2"].selected::after {
-  border-color: #22c55e;
-}
-
 .selection-badge {
   position: absolute;
   top: -10px;
@@ -1002,10 +998,6 @@
   font-weight: 600;
   z-index: 5;
   animation: badgePop 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.selection-badge.green {
-  background: #22c55e;
 }
 
 @keyframes badgePop {
