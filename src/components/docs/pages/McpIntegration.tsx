@@ -156,6 +156,45 @@ export function McpIntegration() {
 # the agent makes changes...
 # Then calls wait_for_request again to listen for next request`}</code></pre>
       </section>
+
+      <section className="docs-section" id="http-endpoints">
+        <h2>HTTP Endpoints</h2>
+        <p>For agents that don't support MCP (like Codex or Copilot), the bridge can run as an HTTP server. Start with <code>npx eyeglass-bridge --http</code> on port 3300.</p>
+
+        <h3>Available Endpoints</h3>
+        <div className="docs-table">
+          <div className="docs-row">
+            <span className="mono">GET /api/wait</span>
+            <span>Wait for new focus request (long-polling, blocks until user submits)</span>
+          </div>
+          <div className="docs-row">
+            <span className="mono">POST /api/status</span>
+            <span>Update browser status (idle, pending, fixing, success, failed)</span>
+          </div>
+          <div className="docs-row">
+            <span className="mono">POST /focus</span>
+            <span>Browser posts element selection payload</span>
+          </div>
+          <div className="docs-row">
+            <span className="mono">GET /sse</span>
+            <span>Server-sent events stream for real-time updates</span>
+          </div>
+        </div>
+
+        <h3>Example: Wait for Request</h3>
+        <pre><code>{`curl -s http://localhost:3300/api/wait
+
+# Returns markdown when user selects an element:
+## User Focus Request
+**Interaction ID:** eyeglass-123
+**User Note:** "make this button blue"
+...`}</code></pre>
+
+        <h3>Example: Update Status</h3>
+        <pre><code>{`curl -X POST http://localhost:3300/api/status \\
+  -H "Content-Type: application/json" \\
+  -d '{"status":"fixing","message":"Working on it..."}'`}</code></pre>
+      </section>
     </>
   )
 }
