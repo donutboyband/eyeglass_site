@@ -1,3 +1,5 @@
+import { EyeglassDemo } from '../EyeglassDemo'
+
 const installCommand = 'npx @eyeglass/cli init'
 
 export function GettingStarted() {
@@ -60,17 +62,7 @@ export function GettingStarted() {
 
       <section className="docs-section" id="how-it-works">
         <h2>How It Works</h2>
-        <pre><code>{`┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│     Browser     │     │     Bridge      │     │   Claude Code   │
-│   (Inspector)   │────▶│   (MCP Server)  │◀────│     (Agent)     │
-└─────────────────┘     └─────────────────┘     └─────────────────┘
-        │                       │                       │
-   1. Select element      2. Stores context       3. Long-polls for
-      + type request         + emits events          requests
-        │                       │                       │
-        └───────────────────────┴───────────────────────┘
-                    4. Claude receives request,
-                       makes changes, HMR updates browser`}</code></pre>
+        <EyeglassDemo />
         <ol>
           <li><strong>You select an element</strong> in your browser and type a request (e.g., "make this blue")</li>
           <li><strong>The Inspector</strong> captures semantic information: component name, file path, accessibility tree, styles</li>
