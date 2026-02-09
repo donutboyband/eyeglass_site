@@ -5,7 +5,6 @@ import { NavBar } from "./components/NavBar";
 import { HeroSection } from "./components/HeroSection";
 import { QuickstartSection } from "./components/QuickstartSection";
 import { DemoSection } from "./components/DemoSection";
-import { FlowSection } from "./components/FlowSection";
 import { PayloadSection } from "./components/PayloadSection";
 import { PackagesSection } from "./components/PackagesSection";
 import { FrameworksSection } from "./components/FrameworksSection";
@@ -32,25 +31,6 @@ const QUICKSTART = [
     title: "Watch & edit",
     code: "eyeglass wait_for_request",
     note: "HMR + auto-commit on every AI change.",
-  },
-];
-
-const FLOW = [
-  {
-    title: "Select UI",
-    body: "Point-and-click in the browser. Up to 5 elements per request.",
-  },
-  {
-    title: "Context packet",
-    body: "Component name, file path, props, a11y tree, computed styles, geometry.",
-  },
-  {
-    title: "Claude edit",
-    body: "Semantic snapshot goes through the MCP bridge; Claude edits files directly.",
-  },
-  {
-    title: "HMR + undo",
-    body: "Hot reload shows the change instantly. One-click undo rolls back the commit.",
   },
 ];
 
@@ -105,7 +85,6 @@ function LandingPage({
       />
       <QuickstartSection items={QUICKSTART} />
       <DemoSection />
-      <FlowSection steps={FLOW} />
       <PayloadSection payload={payload} />
       <PackagesSection packages={PACKAGES} />
       <FrameworksSection frameworks={FRAMEWORKS} />
