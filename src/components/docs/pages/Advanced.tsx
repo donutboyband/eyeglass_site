@@ -1,10 +1,6 @@
-export function Advanced() {
-  return (
-    <>
-      <section className="docs-section" id="schema">
-        <h2>Full Schema</h2>
-        <p>Complete TypeScript interface for the semantic snapshot:</p>
-        <pre><code>{`interface SemanticSnapshot {
+import { CodeBlock } from '../../CodeBlock'
+
+const schemaCode = `interface SemanticSnapshot {
   // Element identification
   role: string;           // ARIA role (button, link, textbox, etc.)
   name: string;           // Accessible name
@@ -59,7 +55,24 @@ export function Advanced() {
   // Metadata
   timestamp: number;
   url: string;
-}`}</code></pre>
+}`
+
+const mcpConfigCode = `{
+  "mcpServers": {
+    "eyeglass": {
+      "command": "npx",
+      "args": ["eyeglass-bridge"]
+    }
+  }
+}`
+
+export function Advanced() {
+  return (
+    <>
+      <section className="docs-section" id="schema">
+        <h2>Full Schema</h2>
+        <p>Complete TypeScript interface for the semantic snapshot:</p>
+        <CodeBlock code={schemaCode} language="typescript" />
       </section>
 
       <section className="docs-section" id="configuration">
@@ -67,14 +80,7 @@ export function Advanced() {
 
         <h3>MCP Server Config</h3>
         <p>The bridge is configured in <code>.claude/settings.json</code>:</p>
-        <pre><code>{`{
-  "mcpServers": {
-    "eyeglass": {
-      "command": "npx",
-      "args": ["eyeglass-bridge"]
-    }
-  }
-}`}</code></pre>
+        <CodeBlock code={mcpConfigCode} language="json" />
 
         <h3>Inspector Settings</h3>
         <p>User preferences are stored in localStorage:</p>

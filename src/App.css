@@ -980,6 +980,92 @@
   color: var(--color-text);
 }
 
+/* Prism Syntax Highlighting */
+.code-block {
+  background: #1e1e2e;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 1.25rem;
+  overflow: auto;
+  margin-bottom: 1rem;
+}
+
+.code-block code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #cdd6f4;
+}
+
+/* Catppuccin-inspired syntax colors */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata { color: #6c7086; font-style: italic; }
+
+.token.punctuation { color: #9399b2; }
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted { color: #f38ba8; }
+
+.token.boolean,
+.token.number { color: #fab387; }
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted { color: #a6e3a1; }
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string { color: #94e2d5; }
+
+.token.atrule,
+.token.attr-value,
+.token.keyword { color: #cba6f7; }
+
+.token.function,
+.token.class-name { color: #89b4fa; }
+
+.token.regex,
+.token.important,
+.token.variable { color: #f9e2af; }
+
+.token.important,
+.token.bold { font-weight: bold; }
+
+.token.italic { font-style: italic; }
+
+.token.entity { cursor: help; }
+
+/* Light theme override */
+:root[data-theme='light'] .code-block {
+  background: #f8fafc;
+}
+
+:root[data-theme='light'] .code-block code { color: #334155; }
+:root[data-theme='light'] .token.comment,
+:root[data-theme='light'] .token.prolog { color: #94a3b8; }
+:root[data-theme='light'] .token.punctuation { color: #64748b; }
+:root[data-theme='light'] .token.property,
+:root[data-theme='light'] .token.tag,
+:root[data-theme='light'] .token.deleted { color: #e11d48; }
+:root[data-theme='light'] .token.boolean,
+:root[data-theme='light'] .token.number { color: #d97706; }
+:root[data-theme='light'] .token.string,
+:root[data-theme='light'] .token.inserted { color: #16a34a; }
+:root[data-theme='light'] .token.operator { color: #0891b2; }
+:root[data-theme='light'] .token.keyword { color: #7c3aed; }
+:root[data-theme='light'] .token.function,
+:root[data-theme='light'] .token.class-name { color: #2563eb; }
+
 .docs-section table {
   width: 100%;
   border-collapse: collapse;
