@@ -15,6 +15,8 @@ export function GettingStarted() {
         </div>
       </div>
 
+      <EyeglassDemo />
+
       <section className="docs-section" id="overview">
         <h2>Overview</h2>
         <p>Eyeglass bridges the gap between what you see in your browser and what your AI coding assistant can understand. It's a visual debugging tool that lets you point at any UI element and tell Claude what to change—without leaving your browser.</p>
@@ -62,7 +64,6 @@ export function GettingStarted() {
 
       <section className="docs-section" id="how-it-works">
         <h2>How It Works</h2>
-        <EyeglassDemo />
         <ol>
           <li><strong>You select an element</strong> in your browser and type a request (e.g., "make this blue")</li>
           <li><strong>The Inspector</strong> captures semantic information: component name, file path, accessibility tree, styles</li>
