@@ -171,8 +171,9 @@ export function LandingDemo() {
       {showPanel && (
         <div className="landing-demo-panel">
           <div className="demo-panel-header">
-            <span className="demo-component-tag">&lt;Card /&gt;</span>
-            <span className="demo-badge">×2</span>
+            <span className="demo-component-tag">&lt;Card /&gt; ×2</span>
+            <span className="demo-file-path">src/components/Card.tsx</span>
+            <button className="demo-close-btn">×</button>
           </div>
 
           {/* Input or Request Display */}

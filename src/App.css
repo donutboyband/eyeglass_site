@@ -1073,13 +1073,38 @@
   letter-spacing: -0.01em;
 }
 
-.demo-badge {
+.landing-demo-panel .demo-file-path {
   font-size: 11px;
-  font-weight: 600;
-  color: var(--accent);
-  background: var(--accent-soft);
-  padding: 3px 8px;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.landing-demo-panel .demo-close-btn {
+  width: 24px;
+  height: 24px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
   border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.landing-demo-panel .demo-close-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-secondary);
+}
+
+:root[data-theme='dark'] .landing-demo-panel .demo-close-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .landing-demo-panel .demo-input-area {
