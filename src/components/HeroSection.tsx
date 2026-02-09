@@ -44,9 +44,12 @@ export function HeroSection({ installCommand, copied, onCopy }: Props) {
   return (
     <section className="hero">
       <div className="hero-content">
-        <p className="hero-kicker">
-          For <span className="agent-typewriter">{displayText}<span className="cursor">|</span></span>.
-        </p>
+        <div className="hero-kicker-wrapper">
+          <span className="hero-kicker-prefix">For</span>
+          <p className="hero-kicker">
+            <span className="agent-typewriter">{displayText}<span className="cursor">|</span></span>
+          </p>
+        </div>
         <h1 className="hero-headline">
           <span className="highlight">
             clicks
