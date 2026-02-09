@@ -131,6 +131,27 @@
   font-size: 0.9rem;
   color: var(--color-text-muted);
   margin-bottom: 1.8rem;
+  perspective: 1000px;
+}
+
+.agent-flip {
+  display: inline-block;
+  animation: flip 0.6s ease-in-out;
+}
+
+@keyframes flip {
+  0% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
 }
 
 .hero h1 {

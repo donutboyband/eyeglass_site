@@ -23,7 +23,7 @@ export function HeroSection({ installCommand, copied, onCopy }: Props) {
     <section className="hero">
       <div className="hero-content">
         <p className="hero-kicker">
-          For {AGENTS[agentIndex]}.
+          For <span key={agentIndex} className="agent-flip">{AGENTS[agentIndex]}</span>.
         </p>
         <h1 className="hero-headline">
           <span className="highlight">
