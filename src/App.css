@@ -1147,15 +1147,6 @@
   color: var(--text-primary);
 }
 
-:root[data-theme='dark'] .landing-demo-panel {
-  --glass-bg: rgba(15, 23, 42, 0.95);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --divider: rgba(255, 255, 255, 0.08);
-  --text-primary: #f1f5f9;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-}
-
 @keyframes panelSlide {
   from { opacity: 0; transform: translateY(8px) scale(0.96); }
   to { opacity: 1; transform: translateY(0) scale(1); }
