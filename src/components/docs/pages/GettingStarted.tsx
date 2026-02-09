@@ -37,6 +37,7 @@ export function GettingStarted() {
           <li>Installs <code>@eyeglass/inspector</code> as a dev dependency</li>
           <li>Creates <code>.claude/settings.json</code> with MCP configuration</li>
           <li>Configures your bundler (Vite, Next.js, CRA, or Remix)</li>
+          <li>Creates a <code>/eyeglass</code> skill for hands-free listening</li>
         </ul>
 
         <h3>2. Start Your Dev Server</h3>
