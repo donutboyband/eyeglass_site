@@ -1,4 +1,5 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 const navGroups = [
   {
@@ -75,6 +76,27 @@ const navGroups = [
 ]
 
 export function DocsNav() {
+  const location = useLocation()
+  const [hash, setHash] = useState(location.hash)
+
+  useEffect(() => {
+    setHash(location.hash)
+
+    const handleHashChange = () => setHash(window.location.hash)
+    window.addEventListener('hashchange', handleHashChange)
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [location])
+
+  const isActive = (to: string) => {
+    const [path, linkHash] = to.split('#')
+    const currentPath = location.pathname
+
+    if (linkHash) {
+      return currentPath === path && hash === `#${linkHash}`
+    }
+    return currentPath === path && !hash
+  }
+
   return (
     <nav className="docs-nav" aria-label="Docs navigation">
       <div className="docs-nav-title">Eyeglass Docs</div>
@@ -87,7 +109,12 @@ export function DocsNav() {
 
             if (hasHash) {
               return (
-                <a key={to} href={to}>
+                <a
+                  key={to}
+                  href={to}
+                  className={isActive(to) ? 'active' : ''}
+                  onClick={() => setHash(`#${to.split('#')[1]}`)}
+                >
                   {label}
                 </a>
               )
@@ -98,7 +125,10 @@ export function DocsNav() {
                 key={to}
                 to={basePath}
                 end={basePath === '/docs'}
-                className={({ isActive }) => isActive ? 'active' : ''}
+                className={({ isActive: routeActive }) =>
+                  routeActive && !hash ? 'active' : ''
+                }
+                onClick={() => setHash('')}
               >
                 {label}
               </NavLink>
