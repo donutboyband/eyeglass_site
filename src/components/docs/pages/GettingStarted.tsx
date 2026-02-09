@@ -8,7 +8,7 @@ export function GettingStarted() {
       <div className="docs-hero">
         <p className="section-label">Documentation</p>
         <h1>Eyeglass Documentation</h1>
-        <p className="hero-subtitle">Visual debugging for AI coding agents. Point at UI elements, describe what you want, and let Claude Code edit with full context.</p>
+        <p className="hero-subtitle">Visual debugging for AI coding agents. Point at UI elements, describe what you want, and let the agent edit with full context.</p>
         <div className="hero-actions minimal" style={{ justifyContent: 'flex-start' }}>
           <a className="link-arrow" href="#quickstart">Get Started →</a>
           <code className="install minimal">{installCommand}</code>
@@ -47,7 +47,7 @@ export function GettingStarted() {
         <h3>2. Start Your Dev Server</h3>
         <pre><code>npm run dev</code></pre>
 
-        <h3>3. Start Claude Code</h3>
+        <h3>3. Start the Agent</h3>
         <pre><code>claude</code></pre>
         <p>Tell Claude to listen for requests:</p>
         <pre><code>&gt; wait_for_request</code></pre>
