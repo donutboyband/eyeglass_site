@@ -74,8 +74,9 @@ export function GettingStarted() {
         <h3>4. Use Eyeglass</h3>
         <p>In your browser:</p>
         <ol>
-          <li>Click any element to select it (multi-select with Cmd/Ctrl)</li>
+          <li>Click any element to select it</li>
           <li>Type your request in the Eyeglass panel</li>
+          <li>For multiple elements: click the + button, then click elements to add them</li>
           <li>Submit—the agent automatically receives it and starts working</li>
           <li>Watch changes appear via hot reload</li>
         </ol>
