@@ -13,6 +13,7 @@
   padding: 1rem 2rem;
   background: var(--color-nav);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -1900,6 +1901,10 @@
 
   .nav-mobile {
     display: flex;
+  }
+
+  .nav-mobile .nav-link {
+    padding: 0.5rem 0.75rem;
   }
 
   .hero {
