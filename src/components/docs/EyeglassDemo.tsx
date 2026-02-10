@@ -101,42 +101,42 @@ export function EyeglassDemo() {
       {/* Glass Panel (appears after selection) */}
       {phase !== 'idle' && phase !== 'selecting' && (
         <div className="demo-glass-panel">
-          <div className="demo-panel-header">
-            <span className="demo-component-tag">&lt;Button /&gt;</span>
-            <span className="demo-file-path">src/App.tsx</span>
+          <div className="panel-header">
+            <span className="component-tag">&lt;Button /&gt;</span>
+            <span className="file-path">src/App.tsx</span>
           </div>
 
           {/* Input or Request Display */}
           {phase === 'typing' && (
-            <div className="demo-input-area">
-              <div className="demo-input-field">
+            <div className="input-area">
+              <div className="input-field">
                 {typedText}<span className="demo-cursor">|</span>
               </div>
             </div>
           )}
 
           {phase !== 'typing' && (
-            <div className="demo-user-request">
-              <div className="demo-request-label">Request</div>
-              <div className="demo-request-text">{fullRequest}</div>
+            <div className="user-request">
+              <div className="user-request-label">Request</div>
+              <div className="user-request-text">{fullRequest}</div>
             </div>
           )}
 
           {/* Activity Feed */}
           {(phase === 'fixing' || phase === 'done') && (
-            <div className="demo-activity-feed">
-              <div className="demo-activity-item">
-                <span className="demo-activity-icon action">📄</span>
-                <div className="demo-activity-content">
-                  <span className="demo-activity-text">Reading file</span>
-                  <span className="demo-activity-target">src/App.tsx</span>
+            <div className="activity-feed">
+              <div className="activity-item">
+                <span className="activity-icon action">📄</span>
+                <div className="activity-content">
+                  <span className="activity-text">Reading file</span>
+                  <span className="activity-target">src/App.tsx</span>
                 </div>
               </div>
               {phase === 'done' && (
-                <div className="demo-activity-item">
-                  <span className="demo-activity-icon success">✓</span>
-                  <div className="demo-activity-content">
-                    <span className="demo-activity-text">Changed button color to green</span>
+                <div className="activity-item">
+                  <span className="activity-icon success">✓</span>
+                  <div className="activity-content">
+                    <span className="activity-text">Changed button color to green</span>
                   </div>
                 </div>
               )}
@@ -144,9 +144,9 @@ export function EyeglassDemo() {
           )}
 
           {/* Status Footer */}
-          <div className={`demo-panel-footer ${phase === 'done' ? 'done' : ''}`}>
-            <span className={`demo-status-dot ${phase}`} />
-            <span className="demo-status-text">
+          <div className={`panel-footer ${phase === 'done' ? 'done' : ''}`}>
+            <span className={`status-dot ${phase}`} />
+            <span className="status-text">
               {phase === 'pending' && 'Sending...'}
               {phase === 'fixing' && workingPhrase}
               {phase === 'done' && 'Done'}
