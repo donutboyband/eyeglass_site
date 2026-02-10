@@ -24,7 +24,7 @@ export function QuickstartSection({ items }: Props) {
         {items.map((item, index) => (
           <div key={item.title} className="quick-card">
             <div className="quick-header">
-              <span className="dot" />
+              <span className="step-number">{index + 1}</span>
               <h3>{item.title}</h3>
             </div>
             <div className="code-wrapper">

@@ -121,7 +121,7 @@ export function Advanced() {
 
         <h3>OpenAI Codex CLI</h3>
         <p>Uses HTTP API for agent communication. The CLI creates <code>.codex/eyeglass.md</code> with API documentation:</p>
-        <CodeBlock code={codexConfigCode} language="javascript" />
+        <CodeBlock code={codexConfigCode} language="typescript" />
 
         <h3>Bridge Port</h3>
         <p>The bridge HTTP server runs on port 3300 by default. This is used by Codex CLI and for keepalive messages.</p>
