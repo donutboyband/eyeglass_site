@@ -11,7 +11,6 @@ export function FooterSection() {
           <div className="footer-made-with">
             <span>Made with</span>
             <img src="/eyeglass.svg" alt="Eyeglass" className="footer-logo" />
-            <span>eyeglass</span>
           </div>
           <p className="footer-copy">MIT License</p>
         </div>
