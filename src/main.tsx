@@ -1,3 +1,9 @@
+// Initialize mock demo service BEFORE inspector (patches fetch/EventSource)
+import { initMockDemoService, shouldUseDemoMode } from './services/mockDemoService';
+if (shouldUseDemoMode()) {
+  initMockDemoService();
+}
+
 import '@eyeglass/inspector';
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
