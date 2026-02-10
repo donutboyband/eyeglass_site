@@ -34,37 +34,64 @@ export function McpIntegration() {
         <h3>Returns</h3>
         <p>Markdown-formatted text with:</p>
         <ul>
-          <li>Component name and file path (if available)</li>
-          <li>Element identifiers (role, tagName, id, className)</li>
-          <li>Accessibility information</li>
-          <li>Geometry and layout</li>
-          <li>Computed styles</li>
-          <li>User's request text</li>
+          <li>Interaction ID and user's request note</li>
+          <li>Component name, file path, and line number</li>
+          <li>Element identifiers (tag, role, name, id, classes, data attributes)</li>
+          <li>Accessibility tree (label, description, states)</li>
+          <li>Geometry (bounding box, visibility)</li>
+          <li>Computed styles (display, position, flex/grid, colors, fonts)</li>
+          <li>Framework info (detected framework, component ancestry, props)</li>
+          <li>DOM neighborhood (parent layout context, children)</li>
+          <li>Page context (URL, timestamp)</li>
         </ul>
 
         <h3>Example Output</h3>
-        <pre><code>{`# Focused Element
+        <pre><code>{`## User Focus Request
+**Interaction ID:** eyeglass-1770657937961-abc123
+**User Note:** "Change button color to blue"
+**Component:** \`<PricingCard />\` (src/components/PricingCard.tsx:42)
 
-**Component:** PricingCard
-**File:** src/components/PricingCard.tsx
-**Role:** button
-**Text:** Buy now
+### Element Info
+- Tag: \`<button>\`
+- Role: button
+- Name: "Buy now"
+- ID: \`#cta\`
+- Classes: \`primary\`
 
-## Request
-"Change button color to blue"
-
-## Accessibility
-- Label: "Buy now"
+### Accessibility Tree
+- Label: Buy now
+- Description: none
 - Disabled: false
+- Hidden: false
 
-## Layout
-- Position: 422, 688
-- Size: 180 × 52
+### Geometry
+- Box: 180x52 at (422, 688)
+- Visible: true
 
-## Styles
-- Background: #0ea5e9
-- Color: #ffffff
-- Padding: 12px 24px`}</code></pre>
+### Computed Styles
+- Display: flex
+- Position: static
+- Padding: 12px 24px
+- Margin: 0px
+- Color: rgb(255, 255, 255)
+- Background: rgb(14, 165, 233)
+- Font: Inter, sans-serif
+- Z-Index: auto
+
+### Framework
+- Detected: react
+- Component Tree: PricingCard > HomePage > App
+
+### DOM Neighborhood
+**Parents (layout context):**
+1. \`<div>\` .card-body — flex, column, gap: 1rem
+
+**Children:**
+(none)
+
+### Page Context
+- URL: http://localhost:5173/pricing
+- Timestamp: 2026-02-10T05:15:37.961Z`}</code></pre>
       </section>
 
       <section className="docs-section" id="update-status">
