@@ -1077,7 +1077,7 @@
 .landing-demo {
   position: relative;
   max-width: 900px;
-  margin: 0 auto;
+  margin: 0 auto 80px auto;
 }
 
 .landing-demo-browser {
