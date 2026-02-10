@@ -173,8 +173,7 @@ export function LandingDemo() {
       </div>
 
       {/* Glass Panel */}
-      {showPanel && (
-        <div className="landing-demo-panel">
+      <div className={`landing-demo-panel ${!showPanel ? 'panel-hidden' : ''}`}>
           {/* Header */}
           <div className="panel-header">
             <span className="component-tag">&lt;Card /&gt;</span>
@@ -256,7 +255,6 @@ export function LandingDemo() {
             </>
           )}
         </div>
-      )}
     </div>
   )
 }

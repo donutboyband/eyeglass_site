@@ -1,5 +1,6 @@
 .app {
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 /* Nav */
@@ -110,6 +111,10 @@
   transition: all 0.2s;
 }
 
+.github-link svg {
+  min-width: 16px;
+}
+
 .github-link:hover {
   background: var(--color-border);
   color: var(--color-text);
@@ -212,7 +217,7 @@
 }
 
 .hero-headline {
-  font-size: 5.5rem;
+  font-size: clamp(2.5rem, 10vw, 5.5rem);
   letter-spacing: -0.03em;
   line-height: 1.1;
 }
@@ -1106,7 +1111,9 @@
 .landing-demo {
   position: relative;
   max-width: 900px;
-  margin: 0 auto 120px auto;
+  margin: 0 auto 20px auto;
+  min-height: 400px;
+  overflow: visible;
 }
 
 .landing-demo-browser {
@@ -1241,6 +1248,12 @@
 @keyframes panelSlide {
   from { opacity: 0; transform: translateY(8px) scale(0.96); }
   to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.landing-demo-panel.panel-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
 
 :root[data-theme='dark'] .landing-demo-panel {
@@ -1661,12 +1674,22 @@
 }
 
 @media (max-width: 800px) {
+  .landing-demo {
+    padding: 0 1rem;
+    min-height: 750px;
+  }
+
+  .landing-demo-browser {
+    margin-bottom: 1rem;
+  }
+
   .landing-demo-panel {
-    position: relative;
-    top: 1rem;
-    right: 0;
-    width: 100%;
-    margin-top: 1rem;
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 1rem;
+    right: 1rem;
+    width: auto;
   }
 
   .landing-demo-cards {
@@ -1676,6 +1699,10 @@
 
   .landing-demo-card {
     min-width: auto;
+  }
+
+  .landing-demo-content {
+    padding: 1.5rem;
   }
 }
 
@@ -1717,8 +1744,9 @@
   border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 1rem;
-  overflow: auto;
+  overflow-x: auto;
   margin-bottom: 1rem;
+  max-width: 100%;
 }
 
 .docs-section code {
@@ -1885,6 +1913,23 @@
     font-size: 1.1rem;
   }
 
+  .hero-headline .hand-arrow {
+    width: 60px;
+    height: 24px;
+  }
+
+  .install {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 0.9rem;
+  }
+
+  .install code {
+    word-break: break-all;
+  }
+
   .install-command {
     flex-direction: column;
     gap: 0.5rem;
@@ -1938,6 +1983,15 @@
   .docs-nav a {
     padding: 0.4rem 0.75rem;
     border-left: none;
+  }
+
+  .docs-row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .docs-row .mono {
+    font-size: 0.85rem;
   }
 }
 
