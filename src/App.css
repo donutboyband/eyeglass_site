@@ -615,7 +615,12 @@
   overflow: auto;
 }
 
-.payload .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.payload .chips { 
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 0.5rem; 
+  margin-top: 1rem; 
+}
 
 /* Footer */
 .footer {
