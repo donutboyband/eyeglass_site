@@ -17,16 +17,25 @@ export function Packages() {
 
         <h3>Options</h3>
         <ul>
+          <li><code>--claude</code> - Configure Claude Code only</li>
+          <li><code>--copilot</code> - Configure GitHub Copilot CLI only</li>
+          <li><code>--codex</code> - Configure OpenAI Codex CLI only</li>
           <li><code>--dry-run</code> - Preview changes without making them</li>
           <li><code>--skip-install</code> - Skip installing <code>@eyeglass/inspector</code></li>
         </ul>
 
         <h3>What Init Does</h3>
         <ol>
+          <li>Prompts to select which AI coding agents to configure</li>
           <li>Detects your framework (Vite, Next.js, CRA, Remix)</li>
           <li>Installs <code>@eyeglass/inspector</code> as a dev dependency</li>
           <li>Adds import to your entry file</li>
-          <li>Creates <code>.claude/settings.json</code> with MCP config</li>
+          <li>Creates agent-specific config files:</li>
+          <ul>
+            <li><strong>Claude Code:</strong> <code>.claude/settings.json</code> + <code>.claude/skills/eyeglass.md</code></li>
+            <li><strong>GitHub Copilot CLI:</strong> <code>.copilot/mcp-config.json</code></li>
+            <li><strong>OpenAI Codex CLI:</strong> <code>.codex/eyeglass.md</code> (HTTP API docs)</li>
+          </ul>
         </ol>
       </section>
 
@@ -54,14 +63,16 @@ export function Packages() {
 
       <section className="docs-section" id="bridge">
         <h2>@eyeglass/bridge</h2>
-        <p>MCP server that connects browser to the agent.</p>
+        <p>MCP/HTTP server that connects the browser to AI coding agents.</p>
 
         <h3>Installation</h3>
         <p>Automatically configured by the CLI, but can be installed manually:</p>
         <pre><code>npm install @eyeglass/bridge</code></pre>
 
         <h3>Usage</h3>
-        <p>The bridge runs as an MCP server via <code>.claude/settings.json</code>:</p>
+        <p>The bridge runs as an MCP server or HTTP API, depending on your agent:</p>
+        
+        <h4>Claude Code (stdio MCP)</h4>
         <pre><code>{`{
   "mcpServers": {
     "eyeglass": {
@@ -71,10 +82,26 @@ export function Packages() {
   }
 }`}</code></pre>
 
+        <h4>GitHub Copilot CLI (local MCP)</h4>
+        <pre><code>{`{
+  "mcpServers": {
+    "eyeglass": {
+      "type": "local",
+      "command": "npx",
+      "args": ["eyeglass-bridge"],
+      "tools": ["*"]
+    }
+  }
+}`}</code></pre>
+
+        <h4>OpenAI Codex CLI (HTTP API)</h4>
+        <p>Base URL: <code>http://localhost:3300/api</code></p>
+        <p>Endpoints: <code>/request</code>, <code>/status</code>, <code>/thought</code>, <code>/action</code>, <code>/question</code></p>
+
         <h3>Architecture</h3>
         <ul>
-          <li><strong>MCP Server:</strong> stdio-based communication with the agent</li>
-          <li><strong>HTTP Server:</strong> REST API + Server-Sent Events (port 3939)</li>
+          <li><strong>MCP Server:</strong> stdio-based communication for Claude Code and Copilot CLI</li>
+          <li><strong>HTTP Server:</strong> REST API + Server-Sent Events on port 3300</li>
           <li><strong>State Management:</strong> In-memory store for requests and interactions</li>
         </ul>
       </section>
