@@ -122,6 +122,73 @@ export function McpIntegration() {
 4. update_status("success", "Button color updated!")`}</code></pre>
       </section>
 
+      <section className="docs-section" id="report-action">
+        <h2>report_action</h2>
+        <p>Logs actions the agent is taking, showing progress in the inspector's activity feed. This helps users understand what files are being read or modified.</p>
+
+        <h3>Usage</h3>
+        <pre><code>{`report_action({
+  interactionId: "abc123",
+  action: "reading",
+  target: "src/components/PricingCard.tsx"
+})
+
+report_action({
+  interactionId: "abc123",
+  action: "writing",
+  target: "src/components/PricingCard.tsx",
+  complete: true
+})`}</code></pre>
+
+        <h3>Action Types</h3>
+        <ul>
+          <li><code>reading</code> - Reading a file</li>
+          <li><code>writing</code> - Writing/editing a file</li>
+          <li><code>searching</code> - Searching for files or content</li>
+          <li><code>thinking</code> - Processing or analyzing</li>
+        </ul>
+
+        <h3>Parameters</h3>
+        <ul>
+          <li><code>action</code> - One of: reading, writing, searching, thinking</li>
+          <li><code>target</code> - What you're acting on (file path, search query, etc.)</li>
+          <li><code>complete</code> - Optional boolean to mark action as finished</li>
+        </ul>
+      </section>
+
+      <section className="docs-section" id="ask-question">
+        <h2>ask_question</h2>
+        <p>Prompts the user with a multiple choice question and blocks until they respond. Use this when you need clarification or want to offer the user options.</p>
+
+        <h3>Usage</h3>
+        <pre><code>{`ask_question({
+  interactionId: "abc123",
+  questionId: "color-choice",
+  question: "Which shade of blue?",
+  options: [
+    { id: "sky", label: "Sky Blue (#0ea5e9)" },
+    { id: "indigo", label: "Indigo (#6366f1)" },
+    { id: "royal", label: "Royal Blue (#2563eb)" }
+  ]
+})`}</code></pre>
+
+        <h3>Returns</h3>
+        <pre><code>{`{
+  "interactionId": "abc123",
+  "questionId": "color-choice",
+  "answerId": "indigo",
+  "answerLabel": "Indigo (#6366f1)"
+}`}</code></pre>
+
+        <h3>Best Practices</h3>
+        <ul>
+          <li>Keep options to 2-4 choices</li>
+          <li>Make option labels clear and descriptive</li>
+          <li>Use when the decision meaningfully affects the outcome</li>
+          <li>Don't over-ask - make reasonable defaults when possible</li>
+        </ul>
+      </section>
+
       <section className="docs-section" id="wait-for-request">
         <h2>wait_for_request</h2>
         <p>Long-polls for new focus requests from the browser. This is a blocking call that waits until the user submits a request.</p>
@@ -155,6 +222,37 @@ export function McpIntegration() {
 
 # the agent makes changes...
 # Then calls wait_for_request again to listen for next request`}</code></pre>
+      </section>
+
+      <section className="docs-section" id="get-focus-history">
+        <h2>get_focus_history</h2>
+        <p>Returns the history of previously focused elements from the current session. Useful for referencing earlier selections or understanding context.</p>
+
+        <h3>Usage</h3>
+        <pre><code>&gt; get_focus_history</code></pre>
+
+        <h3>Returns</h3>
+        <p>An array of up to 5 recent focus payloads, newest first:</p>
+        <pre><code>{`[
+  {
+    "interactionId": "eyeglass-456",
+    "snapshot": { /* element data */ },
+    "userNote": "previous request..."
+  },
+  {
+    "interactionId": "eyeglass-123",
+    "snapshot": { /* element data */ },
+    "userNote": "older request..."
+  }
+]`}</code></pre>
+
+        <h3>Use Cases</h3>
+        <ul>
+          <li>Reference a previously selected element</li>
+          <li>Compare current and past selections</li>
+          <li>Understand the sequence of user requests</li>
+          <li>Debug or trace interaction history</li>
+        </ul>
       </section>
 
       <section className="docs-section" id="http-endpoints">
