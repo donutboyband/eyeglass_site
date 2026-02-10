@@ -59,7 +59,9 @@
   transition: all 0.2s;
 }
 
-.theme-toggle:hover { border-color: var(--color-border-subtle); }
+@media (hover: hover) {
+  .theme-toggle:hover { border-color: var(--color-border-subtle); }
+}
 
 .nav-link {
   display: flex;
@@ -77,8 +79,10 @@
   margin-right: -12px;
 }
 
-.nav-link:hover {
-  color: var(--color-text);
+@media (hover: hover) {
+  .nav-link:hover {
+    color: var(--color-text);
+  }
 }
 
 .nav-link.active {
@@ -116,9 +120,11 @@
   min-width: 16px;
 }
 
-.github-link:hover {
-  background: var(--color-border);
-  color: var(--color-text);
+@media (hover: hover) {
+  .github-link:hover {
+    background: var(--color-border);
+    color: var(--color-text);
+  }
 }
 
 /* Hero */

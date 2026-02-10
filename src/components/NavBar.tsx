@@ -28,7 +28,6 @@ export function NavBar({ theme, toggleTheme }: Props) {
             className="github-link"
           >
             <GitHubIcon />
-            GitHub
           </a>
           <button
             className="theme-toggle"
