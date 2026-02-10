@@ -7,7 +7,14 @@ export function FooterSection() {
           <a href="https://github.com/donutboyband/eyeglass#readme" target="_blank" rel="noopener noreferrer" className="footer-link">Docs</a>
           <a href="https://github.com/donutboyband/eyeglass/issues" target="_blank" rel="noopener noreferrer" className="footer-link">Issues</a>
         </div>
-        <p className="footer-copy">MIT License</p>
+        <div className="footer-meta">
+          <div className="footer-made-with">
+            <span>Made with</span>
+            <img src="/eyeglass.svg" alt="Eyeglass" className="footer-logo" />
+            <span>eyeglass</span>
+          </div>
+          <p className="footer-copy">MIT License</p>
+        </div>
       </div>
     </footer>
   )
