@@ -1,13 +1,12 @@
-type PackageItem = { name: string; tag: string; desc: string }
+type PackageItem = { name: string; tag: string; desc: string };
 
-type Props = { packages: PackageItem[] }
+type Props = { packages: PackageItem[] };
 
 export function PackagesSection({ packages }: Props) {
   return (
     <section className="section" id="capabilities">
       <div className="section-header">
-        <p className="section-label">Packages</p>
-        <h2>The Eyeglass kit</h2>
+        <h3 className="section-label">Packages</h3>
       </div>
       <div className="packages">
         {packages.map((pkg) => (
@@ -17,10 +16,17 @@ export function PackagesSection({ packages }: Props) {
               <span className="tag">{pkg.tag}</span>
             </div>
             <p>{pkg.desc}</p>
-            <a className="text-link" href="https://github.com/donutboyband/eyeglass" target="_blank" rel="noreferrer">View on GitHub →</a>
+            <a
+              className="text-link"
+              href="https://github.com/donutboyband/eyeglass"
+              target="_blank"
+              rel="noreferrer"
+            >
+              View on GitHub →
+            </a>
           </div>
         ))}
       </div>
     </section>
-  )
+  );
 }

@@ -176,34 +176,42 @@ export function LandingDemo() {
       {showPanel && (
         <div className="landing-demo-panel">
           {/* Header */}
-          <div className="inspector-header">
-            <span className="inspector-tag">&lt;Card /&gt;</span>
-            <button className="inspector-multi-btn active">+</button>
-            <button className="inspector-close-btn">×</button>
+          <div className="panel-header">
+            <span className="component-tag">&lt;Card /&gt;</span>
+            <button className={`multi-select-icon ${isInputMode ? 'active' : ''}`}>+</button>
+            <button className="close-btn">×</button>
           </div>
 
           {/* Multi-select mode UI */}
           {isInputMode && (
             <>
-              <div className="inspector-hint">Click elements to add/remove from selection (max 5)</div>
-              <div className="inspector-selected">
-                <div className="selected-label">2 elements selected</div>
+              <div className="multi-mode-hint">Click elements to add/remove from selection (max 5)</div>
+              <div className="selected-list">
+                <div className="selected-list-header">
+                  <div className="selected-count">2 elements selected</div>
+                </div>
                 <div className="selected-chips">
-                  <span className="selected-chip"><span className="chip-badge">1</span> Card ×</span>
-                  <span className="selected-chip"><span className="chip-badge">2</span> Card ×</span>
+                  <span className="selected-chip">
+                    <span className="selected-chip-number">1</span> Card
+                    <button className="selected-chip-remove">×</button>
+                  </span>
+                  <span className="selected-chip">
+                    <span className="selected-chip-number">2</span> Card
+                    <button className="selected-chip-remove">×</button>
+                  </span>
                 </div>
               </div>
-              <div className="inspector-input-area">
+              <div className="input-area">
                 <input
                   type="text"
-                  className="inspector-input"
-                  placeholder="Describe what to change for these elements.."
+                  className="input-field"
+                  placeholder="Describe what to change for these elements..."
                   value={typedText}
                   readOnly
                 />
-                <div className="inspector-buttons">
-                  <button className="inspector-btn secondary">Cancel</button>
-                  <button className="inspector-btn primary">Send</button>
+                <div className="btn-row">
+                  <button className="btn btn-secondary">Cancel</button>
+                  <button className="btn btn-primary">Send</button>
                 </div>
               </div>
             </>
@@ -212,32 +220,32 @@ export function LandingDemo() {
           {/* Activity mode UI */}
           {isActivityMode && (
             <>
-              <div className="inspector-request">
-                <div className="request-label">Your request</div>
-                <div className="request-text">{fullRequest}</div>
+              <div className="user-request">
+                <div className="user-request-label">Your request</div>
+                <div className="user-request-text">{fullRequest}</div>
               </div>
-              <div className="inspector-activity-feed">
+              <div className="activity-feed">
                 {activities.map((item, idx) => (
-                  <div key={idx} className="inspector-activity-item">
-                    <span className={`inspector-activity-icon ${item.type}`}>
+                  <div key={idx} className="activity-item">
+                    <span className={`activity-icon ${item.type}`}>
                       {item.type === 'thought' && '💭'}
                       {item.type === 'action' && '📄'}
                       {item.type === 'success' && '✓'}
                     </span>
-                    <div className="inspector-activity-content">
-                      <span className={`inspector-activity-text ${item.type === 'thought' ? 'muted' : ''}`}>
+                    <div className="activity-content">
+                      <span className={`activity-text ${item.type === 'thought' ? 'muted' : ''}`}>
                         {item.text}
                       </span>
                       {item.target && (
-                        <span className="inspector-activity-target">{item.target}</span>
+                        <span className="activity-target">{item.target}</span>
                       )}
                     </div>
                   </div>
                 ))}
               </div>
-              <div className={`inspector-footer ${phase === 'done' ? 'done' : ''}`}>
-                <span className={`inspector-status-dot ${phase}`} />
-                <span className="inspector-status-text">
+              <div className={`panel-footer ${phase === 'done' ? 'done' : ''}`}>
+                <span className={`status-dot ${phase}`} />
+                <span className="status-text">
                   {phase === 'pending' && 'Sending...'}
                   {phase === 'thinking' && WORKING_PHRASES[0]}
                   {phase === 'reading' && 'Reading...'}
