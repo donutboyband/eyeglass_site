@@ -1,3 +1,5 @@
+import { CopyableCode } from '../CopyableCode'
+
 export function Packages() {
   return (
     <>
@@ -7,7 +9,7 @@ export function Packages() {
 
         <h3>Installation</h3>
         <p>No installation needed—use with <code>npx</code>:</p>
-        <pre><code>npx @eyeglass/cli init</code></pre>
+        <CopyableCode code="npx @eyeglass/cli init" />
 
         <h3>Commands</h3>
         <ul>
@@ -44,10 +46,10 @@ export function Packages() {
         <p>Browser-side web component for visual element selection and request submission.</p>
 
         <h3>Installation</h3>
-        <pre><code>npm install -D @eyeglass/inspector</code></pre>
+        <CopyableCode code="npm install -D @eyeglass/inspector" />
 
         <h3>Usage</h3>
-        <pre><code>import '@eyeglass/inspector'</code></pre>
+        <CopyableCode code="import '@eyeglass/inspector'" />
 
         <h3>Features</h3>
         <ul>
@@ -67,7 +69,7 @@ export function Packages() {
 
         <h3>Installation</h3>
         <p>Automatically configured by the CLI, but can be installed manually:</p>
-        <pre><code>npm install @eyeglass/bridge</code></pre>
+        <CopyableCode code="npm install @eyeglass/bridge" />
 
         <h3>Usage</h3>
         <p>The bridge runs as an MCP server or HTTP API, depending on your agent:</p>
@@ -111,7 +113,7 @@ export function Packages() {
         <p>Shared TypeScript definitions for Eyeglass packages.</p>
 
         <h3>Installation</h3>
-        <pre><code>npm install -D @eyeglass/types</code></pre>
+        <CopyableCode code="npm install -D @eyeglass/types" />
 
         <h3>Exports</h3>
         <ul>
