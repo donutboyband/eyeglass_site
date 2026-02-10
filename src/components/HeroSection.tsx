@@ -85,9 +85,6 @@ export function HeroSection({ installCommand, copied, onCopy }: Props) {
             </button>
           </div>
         </div>
-        <p className="hero-note">
-          Works with Vite, Next.js, CRA, Remix.
-        </p>
       </div>
       <div className="hero-proof">
         <span className="chip">Auto-commit + undo</span>
