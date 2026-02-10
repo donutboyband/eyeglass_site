@@ -74,7 +74,7 @@ async function sleep(ms: number) {
   return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-async function simulateAgentResponse(interactionId: string, userNote: string) {
+async function simulateAgentResponse(interactionId: string, _userNote: string) {
   const response = getRandomResponse()
 
   // Initial pending status
@@ -153,45 +153,45 @@ async function handleFocusRequest(body: string): Promise<Response> {
 
 // Create a mock EventSource-like object
 function createMockEventSource(url: string): EventSource {
-  const mockES = {
-    readyState: 1 as number, // OPEN
-    url,
-    onopen: null as ((ev: Event) => void) | null,
-    onmessage: null as ((ev: MessageEvent) => void) | null,
-    onerror: null as ((ev: Event) => void) | null,
-    close: () => {
-      mockES.readyState = 2 // CLOSED
-      state.sseCallbacks.delete(callback)
-    },
-    addEventListener: (type: string, listener: EventListener) => {
-      if (type === 'message') {
-        state.sseCallbacks.add(listener as unknown as SSECallback)
-      }
-    },
-    removeEventListener: (type: string, listener: EventListener) => {
-      if (type === 'message') {
-        state.sseCallbacks.delete(listener as unknown as SSECallback)
-      }
-    },
-    dispatchEvent: () => true,
-    withCredentials: false,
-    CONNECTING: 0,
-    OPEN: 1,
-    CLOSED: 2,
-  } as EventSource
+  let _readyState = 1 // OPEN
+  let _onopen: ((ev: Event) => void) | null = null
+  let _onmessage: ((ev: MessageEvent) => void) | null = null
+  let _onerror: ((ev: Event) => void) | null = null
 
   const callback: SSECallback = (event) => {
-    if (mockES.onmessage) {
-      mockES.onmessage(new MessageEvent('message', { data: event.data }))
+    if (_onmessage) {
+      _onmessage(new MessageEvent('message', { data: event.data }))
     }
   }
 
   state.sseCallbacks.add(callback)
 
+  const mockES = {
+    get readyState() { return _readyState },
+    url,
+    get onopen() { return _onopen },
+    set onopen(fn: ((ev: Event) => void) | null) { _onopen = fn },
+    get onmessage() { return _onmessage },
+    set onmessage(fn: ((ev: MessageEvent) => void) | null) { _onmessage = fn },
+    get onerror() { return _onerror },
+    set onerror(fn: ((ev: Event) => void) | null) { _onerror = fn },
+    close: () => {
+      _readyState = 2 // CLOSED
+      state.sseCallbacks.delete(callback)
+    },
+    addEventListener: () => {},
+    removeEventListener: () => {},
+    dispatchEvent: () => true,
+    withCredentials: false,
+    CONNECTING: 0,
+    OPEN: 1,
+    CLOSED: 2,
+  } as unknown as EventSource
+
   // Trigger onopen after a tick
   setTimeout(() => {
-    if (mockES.onopen) {
-      mockES.onopen(new Event('open'))
+    if (_onopen) {
+      _onopen(new Event('open'))
     }
   }, 10)
 
