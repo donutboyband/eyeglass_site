@@ -55,8 +55,12 @@ body {
   min-height: 100vh;
 }
 
-code, .mono {
-  font-family: 'JetBrains Mono', monospace;
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+p, code, .mono {
+  font-family: 'Inter', sans-serif;
 }
 
 a {

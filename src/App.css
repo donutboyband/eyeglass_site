@@ -306,7 +306,7 @@
   background: transparent;
   border: 1px solid var(--color-border);
   border-radius: 6px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 0.875rem;
   color: var(--color-text-muted);
 }
@@ -320,7 +320,7 @@
   background: var(--color-bg-subtle);
   border: 1px solid var(--color-border);
   border-radius: 12px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 1rem;
 }
 
@@ -429,7 +429,7 @@
 .flow-card:hover { transform: translateY(-2px); border-color: var(--color-border-subtle); }
 
 .flow-num {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Space Grotesk', sans-serif;
   color: var(--color-text-subtle);
   margin-bottom: 0.5rem;
 }
@@ -475,7 +475,7 @@
   padding: 0.65rem;
   border-radius: 8px;
   margin-bottom: 0;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 .quick-card .code-wrapper .copy-btn {
@@ -638,7 +638,7 @@
   background: var(--color-bg-subtle);
   border: 1px solid var(--color-border);
   border-radius: 12px;
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 0.9rem;
   max-height: 380px;
   overflow: auto;
@@ -846,7 +846,7 @@
   margin-left: 12px;
   font-size: 0.75rem;
   color: var(--color-text-muted);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 .demo-content {
@@ -1038,7 +1038,7 @@
 }
 
 .demo-glass-panel .activity-target {
-  font-family: 'SF Mono', 'JetBrains Mono', monospace;
+  font-family: 'SF Mono', 'Space Grotesk', sans-serif;
   font-size: 11px;
   color: #64748b;
   margin-top: 2px;
@@ -1543,7 +1543,7 @@
 }
 
 .landing-demo-panel .activity-target {
-  font-family: 'SF Mono', 'JetBrains Mono', monospace;
+  font-family: 'SF Mono', 'Space Grotesk', sans-serif;
   font-size: 11px;
   color: var(--text-muted);
   margin-top: 2px;
@@ -1722,7 +1722,7 @@
 }
 
 .docs-section code {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 0.9em;
 }
 
@@ -1744,7 +1744,7 @@
 }
 
 .code-block code {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 0.85rem;
   line-height: 1.6;
   color: #cdd6f4;
@@ -1844,7 +1844,7 @@
 }
 
 .mono {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 0.9rem;
   color: var(--color-primary);
 }

@@ -102,7 +102,7 @@ export function CoreConcepts() {
           <li><strong>Framework Detection:</strong> Automatically detects React, Vue, and Svelte component names and file paths</li>
           <li><strong>Request Panel:</strong> Type your request and submit to the agent</li>
           <li><strong>Activity Feed:</strong> Real-time updates on the agent's progress via Server-Sent Events</li>
-          <li><strong>Settings:</strong> Toggle auto-commit, change bridge URL, and other preferences</li>
+          <li><strong>Settings:</strong> Toggle auto-commit and theme preferences</li>
           <li><strong>One-Click Undo:</strong> Revert changes directly from the inspector</li>
         </ul>
 
@@ -122,7 +122,6 @@ export function CoreConcepts() {
           <li>Exposes tools via MCP or HTTP endpoints</li>
           <li>Stores element context from the inspector</li>
           <li>Manages request/response cycles via long-polling</li>
-          <li>Handles Git operations (auto-commit, revert)</li>
           <li>Streams real-time updates via Server-Sent Events</li>
         </ul>
 
@@ -131,7 +130,7 @@ export function CoreConcepts() {
         <CodeBlock code={mcpConfigCode} language="json" />
         
         <h3>HTTP Mode</h3>
-        <p>For agents like Codex or Copilot, run the bridge as an HTTP server on port 3300:</p>
+        <p>For agents like Codex, run the bridge as an HTTP server on port 3300:</p>
         <CodeBlock code="npx eyeglass-bridge --http" language="bash" />
         <p>The HTTP server provides the same functionality via REST endpoints:</p>
         <ul>
