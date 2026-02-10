@@ -21,20 +21,6 @@ export function PackagesSection({ packages }: Props) {
           </div>
         ))}
       </div>
-      <div className="trust">
-        <div className="trust-card">
-          <h4>Auto-commit + undo</h4>
-          <p>Every change is committed with tags. One-click undo rolls back instantly.</p>
-        </div>
-        <div className="trust-card">
-          <h4>Local-first</h4>
-          <p>Inspector runs in-browser; bridge stays on your machine. Demo mode never leaves this page.</p>
-        </div>
-        <div className="trust-card">
-          <h4>Agent-agnostic</h4>
-          <p>Uses MCP or HTTP to deliver context and receive edits. Works with any AI coding agent.</p>
-        </div>
-      </div>
     </section>
   )
 }
