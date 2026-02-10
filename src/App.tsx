@@ -1,11 +1,11 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 import { NavBar } from "./components/NavBar";
 import { HeroSection } from "./components/HeroSection";
 import { QuickstartSection } from "./components/QuickstartSection";
 import { DemoSection } from "./components/DemoSection";
-import { PayloadSection } from "./components/PayloadSection";
+
 import { PackagesSection } from "./components/PackagesSection";
 
 import { FooterSection } from "./components/FooterSection";
@@ -63,12 +63,10 @@ function LandingPage({
   installCommand,
   copied,
   onCopy,
-  payload,
 }: {
   installCommand: string;
   copied: boolean;
   onCopy: () => void;
-  payload: string;
 }) {
   return (
     <>
@@ -79,7 +77,6 @@ function LandingPage({
       />
       <DemoSection />
       <QuickstartSection items={QUICKSTART} />
-      <PayloadSection payload={payload} />
       <PackagesSection packages={PACKAGES} />
       <FooterSection />
     </>
@@ -111,34 +108,6 @@ function App() {
     document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
-  const payload = useMemo(
-    () =>
-      JSON.stringify(
-        {
-          component: "PricingCard/Button",
-          filePath: "src/components/PricingCard.tsx",
-          props: { intent: "primary", size: "lg", children: "Buy now" },
-          a11y: { role: "button", name: "Buy now", label: "Primary CTA" },
-          geometry: { x: 422, y: 688, width: 180, height: 52 },
-          styles: {
-            background: "#0ea5e9",
-            color: "#0b1222",
-            borderRadius: "9999px",
-            boxShadow: "0 8px 30px rgba(14, 165, 233, 0.35)",
-          },
-          frameworks: {
-            name: "react",
-            componentName: "Button",
-            ancestry: ["PricingCard", "Layout"],
-          },
-          url: "https://eyeglass.dev/demo",
-        },
-        null,
-        2,
-      ),
-    [],
-  );
-
   return (
     <div className="app">
       <NavBar theme={theme} toggleTheme={toggleTheme} />
@@ -150,7 +119,6 @@ function App() {
               installCommand={INSTALL_COMMAND}
               copied={copied}
               onCopy={copyCommand}
-              payload={payload}
             />
           }
         />

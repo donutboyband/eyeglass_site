@@ -125,7 +125,7 @@ export function CoreConcepts() {
 
       <section className="docs-section" id="semantic-snapshot">
         <h2>Semantic Snapshot</h2>
-        <p>When you select an element, Eyeglass captures a comprehensive semantic snapshot. This is what separates Eyeglass from simple "inspect element" tools—it understands your framework, component structure, and runtime state.</p>
+        <p>When you select an element, Eyeglass captures a comprehensive semantic snapshot.</p>
 
         <h3>Example Snapshot</h3>
         <CodeBlock code={sampleSnapshot} language="json" />
