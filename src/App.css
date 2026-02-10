@@ -620,7 +620,7 @@
   grid-template-columns: repeat(2, auto); 
   gap: 0.5rem; 
   margin-top: 1rem;
-  justify-content: center;
+  justify-content: start;
 }
 
 /* Footer */
