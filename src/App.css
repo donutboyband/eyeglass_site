@@ -438,7 +438,7 @@
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  background: var(--color-accent);
+  background: var(--color-primary);
   color: white;
   font-size: 0.85rem;
   font-weight: 600;
