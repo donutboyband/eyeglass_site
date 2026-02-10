@@ -79,6 +79,7 @@ export function GettingStarted() {
           <li>For multiple elements: click the + button, then click elements to add them</li>
           <li>Submit—the agent automatically receives it and starts working</li>
           <li>Watch changes appear via hot reload</li>
+          <li>Keep chatting with the agent to refine or add follow-up instructions</li>
         </ol>
       </section>
 
