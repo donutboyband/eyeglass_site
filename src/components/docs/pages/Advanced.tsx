@@ -57,7 +57,8 @@ const schemaCode = `interface SemanticSnapshot {
   url: string;
 }`
 
-const mcpConfigCode = `{
+const mcpConfigCode = `// Claude Code (.claude/settings.json)
+{
   "mcpServers": {
     "eyeglass": {
       "command": "npx",
@@ -65,6 +66,36 @@ const mcpConfigCode = `{
     }
   }
 }`
+
+const copilotConfigCode = `// GitHub Copilot CLI (.copilot/mcp-config.json)
+{
+  "mcpServers": {
+    "eyeglass": {
+      "type": "local",
+      "command": "npx",
+      "args": ["eyeglass-bridge"],
+      "tools": ["*"]
+    }
+  }
+}`
+
+const codexConfigCode = `// Codex CLI uses HTTP endpoints
+// Base URL: http://localhost:3300/api
+
+// 1. Poll for requests:
+//    GET /request - returns { element, userNote } or null
+//
+// 2. Send status updates:
+//    POST /status { status: "idle" | "pending" | "fixing" | "success" | "failed", message?: string }
+//
+// 3. Log thoughts/actions:
+//    POST /thought { content: string }
+//    POST /action { action: "reading" | "writing" | "searching" | "thinking", target: string, complete?: boolean }
+//
+// 4. Ask user questions:
+//    POST /question { question: string, options: string[] }
+//
+// See .codex/eyeglass.md for implementation details`
 
 export function Advanced() {
   return (
@@ -77,20 +108,30 @@ export function Advanced() {
 
       <section className="docs-section" id="configuration">
         <h2>Configuration</h2>
+        <p>Eyeglass supports multiple AI coding agents. The CLI automatically configures the appropriate settings for your chosen agent(s).</p>
 
-        <h3>MCP Server Config</h3>
-        <p>The bridge is configured in <code>.claude/settings.json</code>:</p>
+        <h3>Claude Code</h3>
+        <p>Uses stdio MCP protocol. Configuration is stored in <code>.claude/settings.json</code>:</p>
         <CodeBlock code={mcpConfigCode} language="json" />
+        <p>The CLI also creates a <code>.claude/skills/eyeglass.md</code> skill file for hands-free listening mode.</p>
+
+        <h3>GitHub Copilot CLI</h3>
+        <p>Uses local MCP protocol with tool access. Configuration is stored in <code>.copilot/mcp-config.json</code>:</p>
+        <CodeBlock code={copilotConfigCode} language="json" />
+
+        <h3>OpenAI Codex CLI</h3>
+        <p>Uses HTTP API for agent communication. The CLI creates <code>.codex/eyeglass.md</code> with API documentation:</p>
+        <CodeBlock code={codexConfigCode} language="javascript" />
+
+        <h3>Bridge Port</h3>
+        <p>The bridge HTTP server runs on port 3300 by default. This is used by Codex CLI and for keepalive messages.</p>
 
         <h3>Inspector Settings</h3>
         <p>User preferences are stored in localStorage:</p>
         <ul>
           <li><strong>Auto-commit:</strong> Enable/disable automatic commits on success</li>
-          <li><strong>Theme:</strong> Follows system preference (future: manual override)</li>
+          <li><strong>Theme:</strong> Light, dark, or auto (follows system preference)</li>
         </ul>
-
-        <h3>Bridge Port</h3>
-        <p>The bridge HTTP server runs on port 3939 by default. This will be configurable in a future release.</p>
 
         <h3>Environment Variables</h3>
         <p>The inspector respects <code>NODE_ENV</code>:</p>
