@@ -91,6 +91,23 @@ export function HeroSection({ installCommand, copied, onCopy }: Props) {
         <span className="chip">A11y + style capture</span>
         <span className="chip">Framework aware</span>
       </div>
+      <svg className="hub-pointer-arrow" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M95 15 L40 15 Q5 15, 5 50 L5 70"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          fill="none"
+        />
+        <path
+          d="M12 60 L5 70 L-2 60"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          fill="none"
+        />
+      </svg>
     </section>
   )
 }

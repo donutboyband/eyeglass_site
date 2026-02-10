@@ -117,7 +117,13 @@
 
 /* Hero */
 .hero {
-  padding: 9rem 2rem 5rem;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
   text-align: center;
   background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(99, 102, 241, 0.18), transparent);
 }
@@ -365,6 +371,17 @@
   border-radius: 999px;
   font-size: 0.9rem;
   color: var(--color-text-muted);
+}
+
+.hub-pointer-arrow {
+  position: absolute;
+  bottom: 60px;
+  left: 80px;
+  width: 120px;
+  height: 100px;
+  color: #a855f7;
+  opacity: 0.7;
+  pointer-events: none;
 }
 
 /* How it Works */
@@ -1857,7 +1874,11 @@
   }
 
   .hero {
-    padding: 8rem 1.5rem 4rem;
+    padding: 1.5rem;
+  }
+
+  .hub-pointer-arrow {
+    display: none;
   }
 
   .hero-subtitle {
