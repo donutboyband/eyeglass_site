@@ -6,16 +6,21 @@ const sampleSnapshot = `{
   "tagName": "button",
   "id": "cta",
   "className": "primary",
+  "dataAttributes": { "testid": "buy-btn" },
   "framework": {
     "name": "react",
     "componentName": "PricingCard",
     "filePath": "src/components/PricingCard.tsx",
+    "lineNumber": 42,
     "props": { "intent": "primary", "size": "lg" },
-    "ancestry": ["App", "HomePage"]
+    "ancestry": ["App", "HomePage", "PricingSection"]
   },
   "a11y": {
     "label": "Buy now",
+    "description": null,
     "disabled": false,
+    "expanded": undefined,
+    "checked": undefined,
     "hidden": false
   },
   "geometry": {
@@ -26,11 +31,33 @@ const sampleSnapshot = `{
     "visible": true
   },
   "styles": {
-    "display": "block",
-    "backgroundColor": "#0ea5e9",
-    "color": "#ffffff",
+    "display": "flex",
+    "position": "static",
+    "flexDirection": undefined,
+    "gridTemplate": undefined,
     "padding": "12px 24px",
-    "borderRadius": "8px"
+    "margin": "0px",
+    "color": "rgb(255, 255, 255)",
+    "backgroundColor": "rgb(14, 165, 233)",
+    "fontFamily": "Inter, sans-serif",
+    "zIndex": "auto"
+  },
+  "neighborhood": {
+    "parents": [
+      {
+        "tagName": "div",
+        "className": "card-body",
+        "styles": {
+          "display": "flex",
+          "position": "relative",
+          "flexDirection": "column",
+          "alignItems": "center",
+          "justifyContent": "center",
+          "gap": "1rem"
+        }
+      }
+    ],
+    "children": []
   },
   "timestamp": 1770657937961,
   "url": "http://localhost:5173/#demo"
@@ -132,12 +159,13 @@ export function CoreConcepts() {
 
         <h3>What's Included</h3>
         <ul>
-          <li><strong>Element Identification:</strong> role, name, tagName, id, className</li>
-          <li><strong>Framework Context:</strong> React/Vue/Svelte component name, file path, props, ancestry</li>
-          <li><strong>Accessibility:</strong> ARIA label, description, states (disabled, expanded, checked, hidden)</li>
-          <li><strong>Geometry:</strong> Position (x, y), dimensions (width, height), visibility</li>
-          <li><strong>Styles:</strong> Computed CSS for display, position, layout, colors, spacing</li>
-          <li><strong>Metadata:</strong> Timestamp and current URL</li>
+          <li><strong>Element Identification:</strong> role, name, tagName, id, className, dataAttributes</li>
+          <li><strong>Framework Context:</strong> Detected framework (react/vue/svelte/vanilla), component name, file path with line number, props, and component ancestry chain</li>
+          <li><strong>Accessibility:</strong> ARIA label, description, and states (disabled, expanded, checked, hidden)</li>
+          <li><strong>Geometry:</strong> Bounding box position (x, y), dimensions (width, height), and visibility status</li>
+          <li><strong>Computed Styles:</strong> display, position, flexDirection, gridTemplate, padding, margin, color, backgroundColor, fontFamily, zIndex</li>
+          <li><strong>DOM Neighborhood:</strong> Parent elements with their layout styles (display, flex, grid), and child element summary with counts</li>
+          <li><strong>Page Context:</strong> Current URL and timestamp</li>
         </ul>
 
         <h3>Why This Matters</h3>
