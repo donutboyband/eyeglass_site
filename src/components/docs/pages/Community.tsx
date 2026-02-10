@@ -1,7 +1,7 @@
 const faq = [
   ['Does this call the agent in the demo?', 'No. The demo page intercepts bridge calls locally (mock bridge, no network or file writes).'],
   ['What frameworks are supported?', 'React, Vue 2/3, Svelte, and vanilla. Component names + file paths are captured where available.'],
-  ['How many elements can I select?', 'Up to 5 at once (multi-select mode). Hold Cmd/Ctrl to select multiple elements.'],
+  ['How many elements can I select?', 'Up to 5 at once (multi-select mode).'],
   ['How do undo/commits work?', 'On success, Eyeglass auto-commits with a tagged message [eyeglass:id]; the hub offers one-click undo via git revert.'],
   ['Can I disable auto-commit?', 'Yes, toggle it in the hub settings (gear icon). Setting persists in localStorage.'],
   ['Does the inspector run in production?', 'No. It only initializes when NODE_ENV !== "production" to keep your production bundle clean.'],
@@ -41,7 +41,7 @@ export function Community() {
 
       <section className="docs-section" id="contributing">
         <h2>Contributing</h2>
-        <p>Contributions are welcome! Eyeglass is open source and built by the community.</p>
+        <p>Contributions are welcome if you would like! This is really a personal project, but I am always open to learning from others and hearing new ideas.</p>
 
         <h3>How to Contribute</h3>
         <ol>

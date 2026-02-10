@@ -97,8 +97,8 @@ export function Packages() {
 }`}</code></pre>
 
         <h4>OpenAI Codex CLI (HTTP API)</h4>
-        <p>Base URL: <code>http://localhost:3300/api</code></p>
-        <p>Endpoints: <code>/request</code>, <code>/status</code>, <code>/thought</code>, <code>/action</code>, <code>/question</code></p>
+        <p>Base URL: <code>http://localhost:3300</code></p>
+        <p>Endpoints: <code>/api/wait</code>, <code>/api/status</code>, <code>/api/thought</code>, <code>/api/action</code>, <code>/api/focus</code>, <code>/api/history</code></p>
 
         <h3>Architecture</h3>
         <ul>

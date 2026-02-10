@@ -129,23 +129,21 @@ export function CoreConcepts() {
         <p>For agents that support MCP, the bridge starts automatically when the agent initializes, as configured in <code>.claude/settings.json</code>:</p>
         <CodeBlock code={mcpConfigCode} language="json" />
         
-        <h3>HTTP Mode</h3>
-        <p>For agents like Codex, run the bridge as an HTTP server on port 3300:</p>
-        <CodeBlock code="npx eyeglass-bridge --http" language="bash" />
-        <p>The HTTP server provides the same functionality via REST endpoints:</p>
+        <h3>HTTP API</h3>
+        <p>The bridge always runs an HTTP server on port 3300 alongside the MCP server. This provides REST endpoints for agents that don't support MCP (like Codex) and enables browser communication:</p>
         <ul>
           <li><code>GET /api/wait</code> - Wait for new focus request (long-polling)</li>
           <li><code>POST /api/status</code> - Update browser status (fixing, success, etc.)</li>
-          <li><code>POST /focus</code> - Browser posts element selections</li>
-          <li><code>GET /sse</code> - Server-sent events stream for real-time updates</li>
+          <li><code>POST /api/thought</code> - Send reasoning to the browser</li>
+          <li><code>POST /api/action</code> - Report actions (reading, writing, etc.)</li>
+          <li><code>GET /events</code> - Server-sent events stream for real-time updates</li>
         </ul>
 
         <h3>Bridge Architecture</h3>
-        <p>The bridge runs on two ports:</p>
+        <p>The bridge runs both servers simultaneously:</p>
         <ul>
-          <li><strong>MCP mode:</strong> stdio-based communication with the agent</li>
-          <li><strong>HTTP mode (3300):</strong> REST API + SSE for both agent and browser communication</li>
-          <li><strong>Browser port (3939):</strong> REST API + SSE for browser communication (both modes)</li>
+          <li><strong>MCP Server (stdio):</strong> Communication with agents like Claude Code via Model Context Protocol</li>
+          <li><strong>HTTP Server (port 3300):</strong> REST API + SSE for browser communication and non-MCP agents</li>
         </ul>
       </section>
 

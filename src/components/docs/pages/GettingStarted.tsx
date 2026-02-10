@@ -22,7 +22,7 @@ export function GettingStarted() {
           <img src="/eyeglass.svg" alt="Eyeglass" className="docs-logo" />
           Eyeglass Documentation
         </h1>
-        <p className="hero-subtitle">Visual debugging for AI coding agents. Point at UI elements, describe what you want, and let the agent edit with full context. This site was built with eyeglass. And full-disclosure--eyeglass was inspired by <a href="https://agentation.dev" target="_blank" rel="noopener noreferrer">Agentation</a>. This started as an experiment to build the piece that was missing from that (for me), which was the ability to see the agent progress and updates without leaving the browser.</p>
+        <p className="hero-subtitle">Visual debugging for AI coding agents. Point at UI elements, describe what you want, and let the agent edit with full context. This site was built with eyeglass. And full-disclosure--eyeglass was inspired by <a href="https://agentation.dev" target="_blank" rel="noopener noreferrer">Agentation</a>. This started as an experiment to build the piece that was missing from that (for me), which was the ability to see the agent progress and updates without leaving the browser. I also wanted to challenge myself to make something like that. If you end up liking the tool or wanting to contribute, let me know!</p>
         <div className="hero-actions minimal" style={{ justifyContent: 'flex-start' }}>
           <a className="link-arrow" href="#quickstart">Get Started →</a>
           <div className="install minimal">
@@ -68,8 +68,10 @@ export function GettingStarted() {
 
         <h3>3. Start the Agent</h3>
         <CopyableCode code="claude" />
-        <p>Tell the agent to listen for requests:</p>
-        <CopyableCode code="> wait_for_request" />
+        <p>Tell the agent to listen for requests. You can use any of these:</p>
+        <CopyableCode code='> "listen for eyeglass"' />
+        <p>Or use the shorthand:</p>
+        <CopyableCode code="> /eyeglass" />
 
         <h3>4. Use Eyeglass</h3>
         <p>In your browser:</p>

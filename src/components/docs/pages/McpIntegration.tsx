@@ -100,7 +100,6 @@ export function McpIntegration() {
 
         <h3>Usage</h3>
         <pre><code>{`update_status({
-  interactionId: "abc123",
   status: "fixing",
   message: "Updating PricingCard.tsx..."
 })`}</code></pre>
@@ -130,7 +129,6 @@ export function McpIntegration() {
 
         <h3>Usage</h3>
         <pre><code>{`send_thought({
-  interactionId: "abc123",
   content: "Found PricingCard component. Updating backgroundColor prop..."
 })`}</code></pre>
 
@@ -155,13 +153,11 @@ export function McpIntegration() {
 
         <h3>Usage</h3>
         <pre><code>{`report_action({
-  interactionId: "abc123",
   action: "reading",
   target: "src/components/PricingCard.tsx"
 })
 
 report_action({
-  interactionId: "abc123",
   action: "writing",
   target: "src/components/PricingCard.tsx",
   complete: true
@@ -189,22 +185,17 @@ report_action({
 
         <h3>Usage</h3>
         <pre><code>{`ask_question({
-  interactionId: "abc123",
-  questionId: "color-choice",
   question: "Which shade of blue?",
   options: [
-    { id: "sky", label: "Sky Blue (#0ea5e9)" },
-    { id: "indigo", label: "Indigo (#6366f1)" },
-    { id: "royal", label: "Royal Blue (#2563eb)" }
+    "Sky Blue (#0ea5e9)",
+    "Indigo (#6366f1)",
+    "Royal Blue (#2563eb)"
   ]
 })`}</code></pre>
 
         <h3>Returns</h3>
         <pre><code>{`{
-  "interactionId": "abc123",
-  "questionId": "color-choice",
-  "answerId": "indigo",
-  "answerLabel": "Indigo (#6366f1)"
+  "answer": "Indigo (#6366f1)"
 }`}</code></pre>
 
         <h3>Best Practices</h3>
@@ -284,24 +275,56 @@ report_action({
 
       <section className="docs-section" id="http-endpoints">
         <h2>HTTP Endpoints</h2>
-        <p>For agents that don't support MCP (like Codex or Copilot), the bridge can run as an HTTP server. Start with <code>npx eyeglass-bridge --http</code> on port 3300.</p>
+        <p>The bridge always runs an HTTP server on port 3300 alongside the MCP server. This enables browser communication and provides a REST API for agents that don't support MCP (like Codex).</p>
 
         <h3>Available Endpoints</h3>
         <div className="docs-table">
           <div className="docs-row">
+            <span className="mono">GET /health</span>
+            <span>Health check endpoint</span>
+          </div>
+          <div className="docs-row">
             <span className="mono">GET /api/wait</span>
             <span>Wait for new focus request (long-polling, blocks until user submits)</span>
+          </div>
+          <div className="docs-row">
+            <span className="mono">GET /api/focus</span>
+            <span>Get current focus context</span>
+          </div>
+          <div className="docs-row">
+            <span className="mono">GET /api/history</span>
+            <span>Get focus history (up to 5 recent)</span>
           </div>
           <div className="docs-row">
             <span className="mono">POST /api/status</span>
             <span>Update browser status (idle, pending, fixing, success, failed)</span>
           </div>
           <div className="docs-row">
+            <span className="mono">POST /api/thought</span>
+            <span>Send agent reasoning to the browser</span>
+          </div>
+          <div className="docs-row">
+            <span className="mono">POST /api/action</span>
+            <span>Report an action (reading, writing, searching, thinking)</span>
+          </div>
+          <div className="docs-row">
             <span className="mono">POST /focus</span>
             <span>Browser posts element selection payload</span>
           </div>
           <div className="docs-row">
-            <span className="mono">GET /sse</span>
+            <span className="mono">POST /answer</span>
+            <span>Browser posts answer to agent question</span>
+          </div>
+          <div className="docs-row">
+            <span className="mono">POST /undo</span>
+            <span>Trigger undo of last commit</span>
+          </div>
+          <div className="docs-row">
+            <span className="mono">POST /commit</span>
+            <span>Trigger a commit</span>
+          </div>
+          <div className="docs-row">
+            <span className="mono">GET /events</span>
             <span>Server-sent events stream for real-time updates</span>
           </div>
         </div>

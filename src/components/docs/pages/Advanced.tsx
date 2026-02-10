@@ -52,6 +52,28 @@ const schemaCode = `interface SemanticSnapshot {
     zIndex: string;
   };
 
+  // DOM neighborhood for layout context
+  neighborhood?: {
+    parents: Array<{
+      tagName: string;
+      className?: string;
+      styles: {
+        display: string;
+        position: string;
+        flexDirection?: string;
+        alignItems?: string;
+        justifyContent?: string;
+        gap?: string;
+        gridTemplate?: string;
+      };
+    }>;
+    children: Array<{
+      tagName: string;
+      className?: string;
+      count?: number;  // If multiple similar children, group them
+    }>;
+  };
+
   // Metadata
   timestamp: number;
   url: string;
@@ -80,20 +102,21 @@ const copilotConfigCode = `// GitHub Copilot CLI (.copilot/mcp-config.json)
 }`
 
 const codexConfigCode = `// Codex CLI uses HTTP endpoints
-// Base URL: http://localhost:3300/api
+// Base URL: http://localhost:3300
 
-// 1. Poll for requests:
-//    GET /request - returns { element, userNote } or null
+// 1. Wait for requests (long-polling):
+//    GET /api/wait - blocks until user submits, returns markdown context
 //
 // 2. Send status updates:
-//    POST /status { status: "idle" | "pending" | "fixing" | "success" | "failed", message?: string }
+//    POST /api/status { status: "idle" | "pending" | "fixing" | "success" | "failed", message?: string }
 //
 // 3. Log thoughts/actions:
-//    POST /thought { content: string }
-//    POST /action { action: "reading" | "writing" | "searching" | "thinking", target: string, complete?: boolean }
+//    POST /api/thought { content: string }
+//    POST /api/action { action: "reading" | "writing" | "searching" | "thinking", target: string, complete?: boolean }
 //
-// 4. Ask user questions:
-//    POST /question { question: string, options: string[] }
+// 4. Get focus context:
+//    GET /api/focus - returns current focus as markdown
+//    GET /api/history - returns up to 5 recent focus payloads
 //
 // See .codex/eyeglass.md for implementation details`
 
@@ -157,7 +180,7 @@ export function Advanced() {
           <li>Verify <code>.claude/settings.json</code> exists with correct MCP config</li>
           <li>Restart the agent to pick up config changes</li>
           <li>Run <code>wait_for_request</code> in the agent to start listening</li>
-          <li>Check that the bridge is running (look for port 3939 in use)</li>
+          <li>Check that the bridge is running (look for port 3300 in use)</li>
         </ol>
 
         <h3>Component Names Not Showing</h3>

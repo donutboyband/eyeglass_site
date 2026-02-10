@@ -13,7 +13,7 @@
   --color-nav: rgba(10, 10, 11, 0.8);
 }
 
-:root[data-theme='light'] {
+:root[data-theme="light"] {
   --color-bg: #f7f7fb;
   --color-bg-subtle: #ffffff;
   --color-bg-muted: #eef1f8;
@@ -29,7 +29,11 @@
 }
 
 :root {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-family:
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
   line-height: 1.6;
   font-weight: 400;
   color: var(--color-text);
@@ -38,7 +42,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
 }
 
 * {
@@ -55,12 +61,28 @@ body {
   min-height: 100vh;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Space Grotesk', sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Space Grotesk", sans-serif;
+  scroll-margin-top: 5rem;
 }
 
-p, code, .mono {
-  font-family: 'Inter', sans-serif;
+[id] {
+  scroll-margin-top: 5rem;
+}
+
+.font-header {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+p,
+code,
+.mono {
+  font-family: "Inter", sans-serif;
 }
 
 a {

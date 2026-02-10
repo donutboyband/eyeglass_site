@@ -13,7 +13,7 @@ export function NavBar({ theme, toggleTheme }: Props) {
   return (
     <nav className="nav">
       <div className="nav-content">
-        <Link to="/" className="nav-logo">
+        <Link to="/" className="nav-logo font-header">
           <img src="/eyeglass.svg" alt="Eyeglass" />
           <span>eyeglass</span>
         </Link>

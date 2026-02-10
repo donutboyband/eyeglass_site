@@ -50,7 +50,7 @@ export function HeroSection({ installCommand, copied, onCopy }: Props) {
             <span className="agent-typewriter">{displayText}<span className="cursor">|</span></span>
           </p>
         </div>
-        <h1 className="hero-headline">
+        <h1 className="hero-headline font-header">
           <span className="highlight">
             clicks
             <svg className="hand-arrow" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
