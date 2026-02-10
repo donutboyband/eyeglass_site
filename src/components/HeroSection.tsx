@@ -86,7 +86,7 @@ export function HeroSection({ installCommand, copied, onCopy }: Props) {
           </div>
         </div>
         <p className="hero-note">
-          Works with Vite, Next.js, CRA, Remix. No agent calls on this demo page.
+          Works with Vite, Next.js, CRA, Remix.
         </p>
       </div>
       <div className="hero-proof">

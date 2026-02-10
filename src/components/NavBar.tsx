@@ -56,7 +56,7 @@ export function NavBar({ theme, toggleTheme }: Props) {
         </div>
         <div className="nav-mobile">
           <Link to="/docs" className={`nav-link${isDocsPage ? ' active' : ''}`}>
-            <svg className="hand-arrow" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <svg className="hand-arrow" style={{marginRight: "1rem"}} viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M4 20C20 22 40 18 60 20C80 22 95 18 110 20"
                 stroke="currentColor"

@@ -7,7 +7,7 @@ import { QuickstartSection } from "./components/QuickstartSection";
 import { DemoSection } from "./components/DemoSection";
 import { PayloadSection } from "./components/PayloadSection";
 import { PackagesSection } from "./components/PackagesSection";
-import { FrameworksSection } from "./components/FrameworksSection";
+
 import { FooterSection } from "./components/FooterSection";
 import { DocsLayout } from "./components/docs/DocsLayout";
 import { GettingStarted } from "./components/docs/pages/GettingStarted";
@@ -57,13 +57,7 @@ const PACKAGES = [
   },
 ];
 
-const FRAMEWORKS = [
-  { name: "React", note: "Vite, Next.js, CRA" },
-  { name: "Vue 3", note: "Vite + CLI" },
-  { name: "Vue 2", note: "Bridge back-compat" },
-  { name: "Svelte / SvelteKit", note: "Component + style capture" },
-  { name: "Vanilla JS", note: "Dom + style snapshot" },
-];
+
 
 function LandingPage({
   installCommand,
@@ -87,7 +81,6 @@ function LandingPage({
       <QuickstartSection items={QUICKSTART} />
       <PayloadSection payload={payload} />
       <PackagesSection packages={PACKAGES} />
-      <FrameworksSection frameworks={FRAMEWORKS} />
       <FooterSection />
     </>
   );
