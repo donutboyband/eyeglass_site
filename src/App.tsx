@@ -25,7 +25,7 @@ const QUICKSTART = [
   {
     title: "Install + scaffold",
     code: INSTALL_COMMAND,
-    note: "Auto-detects Vite, Next.js, CRA, Remix.",
+    note: "Auto-detects and sets up the provider. Works best with Vite.",
   },
   {
     title: "Watch & edit",
