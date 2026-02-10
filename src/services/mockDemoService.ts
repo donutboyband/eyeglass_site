@@ -65,9 +65,10 @@ function getRandomResponse() {
   return mockResponses[Math.floor(Math.random() * mockResponses.length)]
 }
 
-function emit(type: string, data: Record<string, unknown>) {
-  const event = { type, data: JSON.stringify(data) }
-  state.sseCallbacks.forEach(cb => cb(event))
+function emit(activityEvent: Record<string, unknown>) {
+  // Inspector expects: { type: "activity", payload: ActivityEvent }
+  const sseData = JSON.stringify({ type: 'activity', payload: activityEvent })
+  state.sseCallbacks.forEach(cb => cb({ type: 'message', data: sseData }))
 }
 
 async function sleep(ms: number) {
@@ -78,7 +79,8 @@ async function simulateAgentResponse(interactionId: string, _userNote: string) {
   const response = getRandomResponse()
 
   // Initial pending status
-  emit('status', {
+  emit({
+    type: 'status',
     interactionId,
     status: 'pending',
     message: 'Agent received request...',
@@ -88,7 +90,8 @@ async function simulateAgentResponse(interactionId: string, _userNote: string) {
   await sleep(800)
 
   // Fixing status
-  emit('status', {
+  emit({
+    type: 'status',
     interactionId,
     status: 'fixing',
     message: 'Working on it...',
@@ -99,7 +102,8 @@ async function simulateAgentResponse(interactionId: string, _userNote: string) {
   for (let i = 0; i < response.thoughts.length; i++) {
     await sleep(600 + Math.random() * 400)
 
-    emit('thought', {
+    emit({
+      type: 'thought',
       interactionId,
       content: response.thoughts[i],
       timestamp: Date.now(),
@@ -107,7 +111,8 @@ async function simulateAgentResponse(interactionId: string, _userNote: string) {
 
     if (response.actions[i]) {
       await sleep(400 + Math.random() * 300)
-      emit('action', {
+      emit({
+        type: 'action',
         interactionId,
         action: response.actions[i].action,
         target: response.actions[i].target,
@@ -116,7 +121,8 @@ async function simulateAgentResponse(interactionId: string, _userNote: string) {
       })
 
       await sleep(800 + Math.random() * 500)
-      emit('action', {
+      emit({
+        type: 'action',
         interactionId,
         action: response.actions[i].action,
         target: response.actions[i].target,
@@ -129,7 +135,8 @@ async function simulateAgentResponse(interactionId: string, _userNote: string) {
   await sleep(500)
 
   // Success status
-  emit('status', {
+  emit({
+    type: 'status',
     interactionId,
     status: 'success',
     message: response.finalMessage,
@@ -214,7 +221,7 @@ export function initMockDemoService() {
     const url = typeof input === 'string' ? input : input instanceof URL ? input.href : input.url
 
     // Intercept requests to the bridge
-    if (url.includes('localhost:3939') || url.includes('127.0.0.1:3939')) {
+    if (url.includes('localhost:3300') || url.includes('127.0.0.1:3300')) {
       if (url.includes('/focus') && init?.method === 'POST') {
         return handleFocusRequest(init.body as string)
       }
@@ -230,7 +237,7 @@ export function initMockDemoService() {
     constructor(url: string | URL, eventSourceInitDict?: EventSourceInit) {
       const urlStr = typeof url === 'string' ? url : url.href
 
-      if (urlStr.includes('localhost:3939') || urlStr.includes('127.0.0.1:3939')) {
+      if (urlStr.includes('localhost:3300') || urlStr.includes('127.0.0.1:3300')) {
         // Return mock EventSource without calling super with invalid URL
         return createMockEventSource(urlStr) as unknown as EventSource
       }
