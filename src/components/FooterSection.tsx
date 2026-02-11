@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function FooterSection() {
   return (
     <footer className="footer">
@@ -11,14 +13,12 @@ export function FooterSection() {
           >
             GitHub
           </a>
-          <a
-            href="https://github.com/donutboyband/eyeglass#readme"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footer-link"
-          >
+          <Link to="/docs" className="footer-link">
             Docs
-          </a>
+          </Link>
+          <Link to="/sitemap" className="footer-link">
+            Sitemap
+          </Link>
           <a
             href="https://github.com/donutboyband/eyeglass/issues"
             target="_blank"

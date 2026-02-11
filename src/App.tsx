@@ -18,6 +18,8 @@ import { Features } from "./components/docs/pages/Features";
 import { Advanced } from "./components/docs/pages/Advanced";
 import { Packages } from "./components/docs/pages/Packages";
 import { Community } from "./components/docs/pages/Community";
+import { NotFound } from "./components/NotFound";
+import { Sitemap } from "./components/Sitemap";
 
 const INSTALL_COMMAND = "npx @eyeglass/cli init";
 
@@ -132,6 +134,8 @@ function App() {
           <Route path="packages" element={<Packages />} />
           <Route path="community" element={<Community />} />
         </Route>
+        <Route path="/sitemap" element={<Sitemap />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
