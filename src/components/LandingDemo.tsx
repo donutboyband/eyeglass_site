@@ -184,7 +184,7 @@ export function LandingDemo() {
           {/* Multi-select mode UI */}
           {isInputMode && (
             <>
-              <div className="multi-mode-hint">Click elements to add/remove from selection (max 5)</div>
+              <div className="multi-mode-hint">Click elements to add/remove from selection</div>
               <div className="selected-list">
                 <div className="selected-list-header">
                   <div className="selected-count">2 elements selected</div>
