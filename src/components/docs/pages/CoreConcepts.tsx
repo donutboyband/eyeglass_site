@@ -98,7 +98,7 @@ export function CoreConcepts() {
         <ul>
           <li><strong>Hover Highlighting:</strong> See element boundaries and component names as you hover</li>
           <li><strong>Click to Select:</strong> Single-click to select an element and open the request panel</li>
-          <li><strong>Multi-Select:</strong> Hold Cmd/Ctrl and click to select up to 5 elements</li>
+          <li><strong>Multi-Select:</strong> Select multiple items to pass to the agent</li>
           <li><strong>Framework Detection:</strong> Automatically detects React, Vue, and Svelte component names and file paths</li>
           <li><strong>Request Panel:</strong> Type your request and submit to the agent</li>
           <li><strong>Activity Feed:</strong> Real-time updates on the agent's progress via Server-Sent Events</li>
@@ -177,7 +177,7 @@ export function CoreConcepts() {
 
       <section className="docs-section" id="multi-select">
         <h2>Multi-Select</h2>
-        <p>Eyeglass supports selecting up to 5 elements at once. This is useful for batch operations or when you need to describe relationships between elements.</p>
+        <p>Eyeglass supports selecting many elements at once. This is useful for batch operations or when you need to describe relationships between elements.</p>
 
         <h3>How to Multi-Select</h3>
         <ol>

@@ -1,7 +1,7 @@
 const faq = [
   ['Does this call the agent in the demo?', 'No. The demo page intercepts bridge calls locally (mock bridge, no network or file writes).'],
   ['What frameworks are supported?', 'React, Vue 2/3, Svelte, and vanilla. Component names + file paths are captured where available.'],
-  ['How many elements can I select?', 'Up to 5 at once (multi-select mode).'],
+  ['How many elements can I select?', 'As mant elements as you want to pass as context'],
   ['How do undo/commits work?', 'On success, Eyeglass auto-commits with a tagged message [eyeglass:id]; the hub offers one-click undo via git revert.'],
   ['Can I disable auto-commit?', 'Yes, toggle it in the hub settings (gear icon). Setting persists in localStorage.'],
   ['Does the inspector run in production?', 'No. It only initializes when NODE_ENV !== "production" to keep your production bundle clean.'],
