@@ -70,10 +70,15 @@ const navGroups = [
     ],
   },
   {
+    title: 'Changelog',
+    links: [
+      ['/docs/changelog', 'Version History'],
+    ],
+  },
+  {
     title: 'Community',
     links: [
       ['/docs/community', 'FAQ'],
-      ['/docs/community#changelog', 'Changelog'],
       ['/docs/community#contributing', 'Contributing'],
     ],
   },

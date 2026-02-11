@@ -9,12 +9,6 @@ const faq = [
   ['What about SSR/Next.js?', 'Import in a client component or use dynamic imports with { ssr: false } to prevent server-side rendering issues.'],
 ]
 
-const changelog = [
-  ['0.1.3 (inspector)', 'Improved highlighting cursor, multi-select polish, stability fixes.'],
-  ['0.1.x (bridge/CLI)', 'MCP toolset stabilized; auto-commit tagged messages; framework detection tuned.'],
-  ['Roadmap', 'Add richer diffs in hub, per-framework setup tips, and configurable bridge ports.'],
-]
-
 export function Community() {
   return (
     <>
@@ -26,15 +20,6 @@ export function Community() {
               <strong>{q}</strong>
               <p>{a}</p>
             </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="docs-section" id="changelog">
-        <h2>Changelog</h2>
-        <ul>
-          {changelog.map(([ver, note]) => (
-            <li key={ver}><strong>{ver}:</strong> {note}</li>
           ))}
         </ul>
       </section>
