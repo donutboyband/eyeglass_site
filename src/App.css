@@ -10,7 +10,7 @@
   left: 0;
   right: 0;
   z-index: 100;
-  padding: var(--space-5) var(--space-7);
+  padding: var(--space-7) var(--space-9);
   background: var(--color-nav);
   backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
@@ -30,15 +30,15 @@
   align-items: center;
   gap: var(--space-4);
   font-weight: 600;
-  font-size: 11px;
+  font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--color-text);
 }
 
 .nav-logo img {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 }
 
 .nav-links {
@@ -51,15 +51,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   padding: 0;
   border-radius: 0;
   background: transparent;
   border: 1px solid var(--color-border);
   color: var(--color-text-muted);
   cursor: pointer;
-  font-size: 10px;
+  font-size: 12px;
   transition: all 0.1s;
 }
 
@@ -75,7 +75,7 @@
   align-items: center;
   gap: var(--space-2);
   color: var(--color-text-muted);
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
   transition: color 0.1s;
 }
