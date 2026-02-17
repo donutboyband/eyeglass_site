@@ -30,7 +30,7 @@
   align-items: center;
   gap: var(--space-4);
   font-weight: 600;
-  font-size: 13px;
+  font-size: 0.8125rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--color-text);
@@ -59,7 +59,7 @@
   border: 1px solid var(--color-border);
   color: var(--color-text-muted);
   cursor: pointer;
-  font-size: 12px;
+  font-size: 0.75rem;
   transition: all 0.1s;
 }
 
@@ -75,7 +75,7 @@
   align-items: center;
   gap: var(--space-2);
   color: var(--color-text-muted);
-  font-size: 13px;
+  font-size: 0.8125rem;
   font-weight: 500;
   transition: color 0.1s;
 }
@@ -118,7 +118,7 @@
   border: 1px solid var(--color-border);
   border-radius: 0;
   color: var(--color-text-muted);
-  font-size: 10px;
+  font-size: 0.625rem;
   font-weight: 500;
   transition: all 0.1s;
 }
@@ -168,7 +168,7 @@
 }
 
 .hero-kicker-prefix {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -182,7 +182,7 @@
   background: transparent;
   border: 1px solid var(--color-border);
   border-radius: 0;
-  font-size: 12px;
+  font-size: 0.75rem;
   color: var(--color-text-muted);
   margin-bottom: 0;
   perspective: 1000px;
@@ -259,7 +259,7 @@
 }
 
 .hero-subtitle {
-  font-size: 14px;
+  font-size: 0.875rem;
   color: var(--color-text-muted);
   max-width: 480px;
   margin: 0 auto var(--space-8);
@@ -287,7 +287,7 @@
   border: 1px solid var(--color-border);
   color: var(--color-text);
   font-weight: 500;
-  font-size: 11px;
+  font-size: 0.6875rem;
   transition: all 0.1s;
   cursor: pointer;
 }
@@ -329,7 +329,7 @@
 
 .btn.small {
   padding: var(--space-2) var(--space-4);
-  font-size: 10px;
+  font-size: 0.625rem;
 }
 
 .link-arrow {
@@ -350,7 +350,7 @@
   border: 1px solid var(--color-border);
   border-radius: 0;
   font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: 10px;
+  font-size: 0.625rem;
   color: var(--color-text-muted);
 }
 
@@ -365,7 +365,7 @@
   border: 1px solid var(--color-border);
   border-radius: 0;
   font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: 11px;
+  font-size: 0.6875rem;
 }
 
 .install .prompt { color: var(--color-text-subtle); }
@@ -415,7 +415,7 @@
   background: transparent;
   border: 1px solid var(--color-border);
   border-radius: 0;
-  font-size: 9px;
+  font-size: 0.5625rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -446,7 +446,7 @@
 }
 
 .section-label {
-  font-size: 9px;
+  font-size: 0.5625rem;
   font-weight: 600;
   color: var(--color-primary);
   text-transform: uppercase;
@@ -455,7 +455,7 @@
 }
 
 .section h2 {
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
@@ -481,20 +481,20 @@
 
 .flow-num {
   font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: 9px;
+  font-size: 0.5625rem;
   color: var(--color-primary);
   margin-bottom: var(--space-2);
 }
 
 .flow-card h3 {
   margin-bottom: var(--space-1);
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-weight: 600;
 }
 
 .flow-card p {
   color: var(--color-text-muted);
-  font-size: 10px;
+  font-size: 0.625rem;
   line-height: 1.4;
 }
 
@@ -525,7 +525,7 @@
   border-radius: var(--radius-full);
   background: var(--color-primary);
   color: white;
-  font-size: 9px;
+  font-size: 0.5625rem;
   font-weight: 600;
   display: flex;
   align-items: center;
@@ -544,7 +544,7 @@
   border-radius: 0;
   margin-bottom: 0;
   font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: 10px;
+  font-size: 0.625rem;
 }
 
 :root[data-theme='dark'] .quick-card .code-wrapper pre {
@@ -572,7 +572,7 @@
 
 .quick-card p {
   color: var(--color-text-muted);
-  font-size: 10px;
+  font-size: 0.625rem;
 }
 
 /* Packages */
@@ -605,12 +605,12 @@
 }
 
 .package-head h3 {
-  font-size: 10px;
+  font-size: 0.625rem;
   font-family: 'SF Mono', monospace;
 }
 
 .package-card p {
-  font-size: 10px;
+  font-size: 0.625rem;
   color: var(--color-text-muted);
 }
 
@@ -619,7 +619,7 @@
   background: var(--color-primary-soft);
   border: none;
   border-radius: 0;
-  font-size: 8px;
+  font-size: 0.5rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -629,7 +629,7 @@
 .text-link {
   color: var(--color-primary);
   font-weight: 500;
-  font-size: 10px;
+  font-size: 0.625rem;
   margin-top: auto;
 }
 
@@ -675,7 +675,7 @@
 
 .framework-card p {
   color: var(--color-text-muted);
-  font-size: 13px;
+  font-size: 0.8125rem;
 }
 
 /* Architecture */
@@ -713,7 +713,7 @@
   background: transparent;
   border: 1px solid var(--color-border);
   border-radius: 0;
-  font-size: 9px;
+  font-size: 0.5625rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -738,7 +738,7 @@
 
 .demo-plan {
   font-weight: 600;
-  font-size: 10px;
+  font-size: 0.625rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   margin-bottom: var(--space-2);
@@ -751,7 +751,7 @@
 }
 
 .demo-price span {
-  font-size: 10px;
+  font-size: 0.625rem;
   color: var(--color-text-muted);
 }
 
@@ -761,7 +761,7 @@
   display: grid;
   gap: var(--space-1);
   color: var(--color-text-muted);
-  font-size: 10px;
+  font-size: 0.625rem;
 }
 
 .demo-button {
@@ -770,7 +770,7 @@
   border: 1px solid var(--color-primary);
   border-radius: 0;
   font-weight: 500;
-  font-size: 10px;
+  font-size: 0.625rem;
   background: var(--color-primary);
   color: white;
   cursor: pointer;
@@ -790,7 +790,7 @@
 .demo-caption {
   margin-top: var(--space-3);
   color: var(--color-text-muted);
-  font-size: 9px;
+  font-size: 0.5625rem;
 }
 
 .demo-card.after .demo-button {
@@ -817,7 +817,7 @@
 
 .eyebrow {
   color: var(--color-text-muted);
-  font-size: 9px;
+  font-size: 0.5625rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -856,12 +856,12 @@
 
 .step-label {
   font-weight: 600;
-  font-size: 10px;
+  font-size: 0.625rem;
 }
 
 .step-detail {
   color: var(--color-text-muted);
-  font-size: 9px;
+  font-size: 0.5625rem;
 }
 
 .demo-log {
@@ -878,7 +878,7 @@
   background: var(--color-bg-muted);
   border-bottom: 1px solid var(--color-border);
   font-weight: 600;
-  font-size: 10px;
+  font-size: 0.625rem;
 }
 
 .dot.green {
@@ -895,7 +895,7 @@
   color: var(--color-text-muted);
   min-height: 80px;
   font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: 9px;
+  font-size: 0.5625rem;
 }
 
 .muted {
@@ -903,7 +903,7 @@
 }
 
 .tiny {
-  font-size: 8px;
+  font-size: 0.5rem;
 }
 
 .payload-grid {
@@ -919,7 +919,7 @@
   border: 1px solid var(--color-border);
   border-radius: 0;
   font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: 9px;
+  font-size: 0.5625rem;
   max-height: 300px;
   overflow: auto;
 }
@@ -955,7 +955,7 @@
 
 .footer-link {
   color: var(--color-text-muted);
-  font-size: 10px;
+  font-size: 0.625rem;
   transition: color 0.1s;
 }
 
@@ -976,7 +976,7 @@
   align-items: center;
   gap: var(--space-2);
   color: var(--color-text-muted);
-  font-size: 9px;
+  font-size: 0.5625rem;
 }
 
 .footer-logo {
@@ -986,7 +986,7 @@
 
 .footer-copy {
   color: var(--color-text-subtle);
-  font-size: 9px;
+  font-size: 0.5625rem;
 }
 
 /* Docs Layout */
@@ -1055,7 +1055,7 @@
   display: block;
   padding: var(--space-2) 0 var(--space-2) var(--space-5);
   color: var(--color-text-muted);
-  font-size: 13px;
+  font-size: 0.8125rem;
   border-left: 2px solid transparent;
   transition: all var(--duration-fast);
 }
@@ -1135,7 +1135,7 @@
 
 .demo-url {
   margin-left: var(--space-4);
-  font-size: 9px;
+  font-size: 0.5625rem;
   color: var(--color-text-muted);
   font-family: 'SF Mono', monospace;
 }
@@ -1193,7 +1193,7 @@
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
   overflow: hidden;
   animation: panelIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  font-size: 13px;
+  font-size: 0.8125rem;
   z-index: 10;
 }
 
@@ -1213,7 +1213,7 @@
 
 .demo-glass-panel .component-tag {
   font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 500;
   color: #6366f1;
   background: rgba(99, 102, 241, 0.1);
@@ -1223,7 +1223,7 @@
 }
 
 .demo-glass-panel .file-path {
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-family: 'SF Mono', 'Fira Code', monospace;
   color: #64748b;
   overflow: hidden;
@@ -1241,7 +1241,7 @@
   background: rgba(255, 255, 255, 0.6);
   border: 1px solid #6366f1;
   border-radius: 8px;
-  font-size: 13px;
+  font-size: 0.8125rem;
   color: #0f172a;
   box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
@@ -1263,7 +1263,7 @@
 }
 
 .demo-glass-panel .user-request-label {
-  font-size: 10px;
+  font-size: 0.625rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1274,7 +1274,7 @@
 .demo-glass-panel .user-request-text {
   font-weight: 500;
   color: #0f172a;
-  font-size: 13px;
+  font-size: 0.8125rem;
 }
 
 /* Activity feed */
@@ -1304,7 +1304,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  font-size: 0.625rem;
   flex-shrink: 0;
 }
 
@@ -1323,14 +1323,14 @@
 }
 
 .demo-glass-panel .activity-text {
-  font-size: 13px;
+  font-size: 0.8125rem;
   color: #0f172a;
   line-height: 1.4;
 }
 
 .demo-glass-panel .activity-target {
   font-family: 'SF Mono', 'Space Grotesk', sans-serif;
-  font-size: 11px;
+  font-size: 0.6875rem;
   color: #64748b;
   margin-top: 2px;
   display: block;
@@ -1376,7 +1376,7 @@
 }
 
 .demo-glass-panel .status-text {
-  font-size: 12px;
+  font-size: 0.75rem;
   color: #64748b;
   flex: 1;
 }
@@ -1462,7 +1462,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 9px;
+  font-size: 0.5625rem;
   font-weight: 600;
   z-index: 5;
 }
@@ -1478,7 +1478,7 @@
 }
 
 .card-title {
-  font-size: 8px;
+  font-size: 0.5rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -1487,13 +1487,13 @@
 }
 
 .card-value {
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
   margin-bottom: var(--space-1);
 }
 
 .card-label {
-  font-size: 10px;
+  font-size: 0.625rem;
   opacity: 0.5;
 }
 
@@ -1523,7 +1523,7 @@
   box-shadow: var(--panel-glass-shadow);
   overflow: hidden;
   animation: panelSlide 0.12s ease-out;
-  font-size: 11px;
+  font-size: 0.6875rem;
   line-height: 1.4;
   z-index: 10;
   color: var(--panel-text-primary);
@@ -1567,7 +1567,7 @@
 
 .landing-demo-panel .component-tag {
   font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-weight: 600;
   color: var(--panel-accent);
   flex: 1;
@@ -1588,7 +1588,7 @@
   align-items: center;
   justify-content: center;
   transition: all 0.1s;
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 1;
   margin-left: auto;
 }
@@ -1613,7 +1613,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 0.875rem;
   line-height: 1;
   transition: color 0.1s;
 }
@@ -1627,7 +1627,7 @@
   padding: 8px 16px;
   background: var(--panel-accent-soft);
   border-bottom: 1px solid var(--panel-divider);
-  font-size: 11px;
+  font-size: 0.6875rem;
   color: var(--panel-accent);
   font-weight: 500;
 }
@@ -1647,7 +1647,7 @@
 }
 
 .landing-demo-panel .selected-count {
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-weight: 600;
   color: var(--panel-text-secondary);
   text-transform: uppercase;
@@ -1667,7 +1667,7 @@
   padding: 4px 8px;
   background: var(--panel-accent-soft);
   border-radius: 6px;
-  font-size: 11px;
+  font-size: 0.6875rem;
   color: var(--panel-accent);
   font-weight: 500;
 }
@@ -1681,7 +1681,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  font-size: 0.625rem;
   font-weight: 600;
 }
 
@@ -1696,7 +1696,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 1;
   opacity: 0.6;
 }
@@ -1716,7 +1716,7 @@
   padding: 6px 8px;
   border: 1px solid var(--panel-divider);
   border-radius: 0;
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-family: inherit;
   background: white;
   color: var(--panel-text-primary);
@@ -1743,7 +1743,7 @@
   padding: 4px 8px;
   border: 1px solid var(--panel-glass-border);
   border-radius: 0;
-  font-size: 11px;
+  font-size: 0.6875rem;
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
@@ -1769,7 +1769,7 @@
 }
 
 .landing-demo-panel .user-request-label {
-  font-size: 9px;
+  font-size: 0.5625rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -1780,7 +1780,7 @@
 .landing-demo-panel .user-request-text {
   color: var(--panel-text-primary);
   font-weight: 500;
-  font-size: 11px;
+  font-size: 0.6875rem;
 }
 
 /* Activity feed */
@@ -1811,7 +1811,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  font-size: 8px;
+  font-size: 0.5rem;
   margin-top: 1px;
 }
 
@@ -1835,7 +1835,7 @@
 
 .landing-demo-panel .activity-text {
   color: var(--panel-text-primary);
-  font-size: 10px;
+  font-size: 0.625rem;
   line-height: 1.3;
 }
 
@@ -1846,7 +1846,7 @@
 
 .landing-demo-panel .activity-target {
   font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: 9px;
+  font-size: 0.5625rem;
   color: var(--panel-text-muted);
   margin-top: 1px;
   display: block;
@@ -1894,7 +1894,7 @@
 }
 
 .landing-demo-panel .status-text {
-  font-size: 10px;
+  font-size: 0.625rem;
   color: var(--panel-text-secondary);
   flex: 1;
 }
@@ -1948,7 +1948,7 @@
   bottom: -30px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 9px;
+  font-size: 0.5625rem;
   color: var(--color-text-muted);
   background: transparent;
   padding: var(--space-2) var(--space-4);
@@ -2041,7 +2041,7 @@
 
 .docs-section code {
   font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 .docs-section :not(pre) > code {
@@ -2049,7 +2049,7 @@
   padding: var(--space-1) var(--space-2);
   border-radius: var(--radius-sm);
   color: var(--color-primary);
-  font-size: 12px;
+  font-size: 0.75rem;
 }
 
 /* Prism Syntax Highlighting */
@@ -2068,7 +2068,7 @@
 
 .code-block code {
   font-family: 'SF Mono', 'Fira Code', monospace;
-  font-size: 12px;
+  font-size: 0.75rem;
   line-height: 1.6;
   color: #e6edf3;
 }
