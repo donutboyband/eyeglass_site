@@ -1,41 +1,118 @@
+/* Eyeglass Design System */
 :root {
+  /* Surface Colors (Dark - Default) */
   --color-bg: #0a0a0b;
   --color-bg-subtle: #111113;
   --color-bg-muted: #18181b;
-  --color-border: #27272a;
-  --color-border-subtle: #3f3f46;
-  --color-text: #fafafa;
-  --color-text-muted: #a1a1aa;
-  --color-text-subtle: #71717a;
+  --color-border: rgba(240, 246, 252, 0.1);
+  --color-border-subtle: rgba(240, 246, 252, 0.15);
+
+  /* Text Colors */
+  --color-text: #e6edf3;
+  --color-text-muted: #8b949e;
+  --color-text-subtle: #6e7681;
+
+  /* Brand Colors */
   --color-primary: #6366f1;
   --color-primary-hover: #818cf8;
-  --color-accent: #22c55e;
-  --color-nav: rgba(10, 10, 11, 0.8);
+  --color-primary-soft: rgba(99, 102, 241, 0.15);
+  --color-accent: #10b981;
+  --color-accent-soft: rgba(16, 185, 129, 0.15);
+
+  /* Semantic Colors */
+  --color-success: #3fb950;
+  --color-error: #f85149;
+  --color-warning: #f97316;
+  --color-info: #0ea5e9;
+  --color-thought: #8b5cf6;
+
+  /* Glass Effect */
+  --glass-bg: rgba(22, 27, 34, 0.95);
+  --glass-border: rgba(240, 246, 252, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), 0 2px 8px rgba(0, 0, 0, 0.4);
+  --glass-blur: blur(20px) saturate(180%);
+
+  /* Navigation */
+  --color-nav: rgba(10, 10, 11, 0.88);
+
+  /* Spacing Scale (Compact like lens/hub) */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 5px;
+  --space-4: 6px;
+  --space-5: 8px;
+  --space-6: 10px;
+  --space-7: 12px;
+  --space-8: 14px;
+  --space-9: 16px;
+
+  /* Border Radius (Sharp/Minimal) */
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 2px;
+  --radius-full: 50%;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.12);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+
+  /* Animation */
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-fast: 0.15s;
+  --duration-normal: 0.25s;
 }
 
 :root[data-theme="light"] {
-  --color-bg: #f7f7fb;
-  --color-bg-subtle: #ffffff;
-  --color-bg-muted: #eef1f8;
-  --color-border: #d6dae5;
-  --color-border-subtle: #c1c7d6;
+  /* Surface Colors (Light) */
+  --color-bg: #fafbfc;
+  --color-bg-subtle: rgba(255, 255, 255, 0.88);
+  --color-bg-muted: #f4f5f7;
+  --color-border: rgba(0, 0, 0, 0.12);
+  --color-border-subtle: rgba(0, 0, 0, 0.18);
+
+  /* Text Colors */
   --color-text: #0f172a;
-  --color-text-muted: #4b5563;
-  --color-text-subtle: #6b7280;
-  --color-primary: #4f46e5;
-  --color-primary-hover: #4338ca;
-  --color-accent: #16a34a;
-  --color-nav: rgba(255, 255, 255, 0.92);
+  --color-text-muted: #64748b;
+  --color-text-subtle: #94a3b8;
+
+  /* Brand Colors */
+  --color-primary: #6366f1;
+  --color-primary-hover: #4f46e5;
+  --color-primary-soft: rgba(99, 102, 241, 0.1);
+  --color-accent: #10b981;
+  --color-accent-soft: rgba(16, 185, 129, 0.1);
+
+  /* Semantic Colors */
+  --color-success: #10b981;
+  --color-error: #ef4444;
+  --color-warning: #f97316;
+  --color-info: #0ea5e9;
+  --color-thought: #8b5cf6;
+
+  /* Glass Effect */
+  --glass-bg: rgba(255, 255, 255, 0.88);
+  --glass-border: rgba(0, 0, 0, 0.12);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+  --glass-blur: blur(20px) saturate(180%);
+
+  /* Navigation */
+  --color-nav: rgba(255, 255, 255, 0.88);
+
+  /* Shadows (lighter for light mode) */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 :root {
-  font-family:
-    "Inter",
-    system-ui,
-    -apple-system,
-    sans-serif;
-  line-height: 1.6;
+  /* Typography - Eyeglass Design System (Compact) */
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.4;
   font-weight: 400;
+  font-size: 112.5%; /* 1rem = 18px */
   color: var(--color-text);
   background-color: var(--color-bg);
   font-synthesis: none;
@@ -43,8 +120,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition:
-    background-color 0.25s ease,
-    color 0.25s ease;
+    background-color var(--duration-normal) var(--ease-out),
+    color var(--duration-normal) var(--ease-out);
 }
 
 * {
@@ -71,7 +148,9 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   scroll-margin-top: 5rem;
 }
 
@@ -80,21 +159,36 @@ h6 {
 }
 
 .font-header {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-weight: 600;
 }
 
-p,
 code,
-.mono {
-  font-family: "Inter", sans-serif;
+.mono,
+pre {
+  font-family: 'SF Mono', 'Fira Code', 'Monaco', monospace;
+}
+
+p {
+  font-family: inherit;
+  line-height: 1.6;
 }
 
 a {
   color: var(--color-primary);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color var(--duration-fast);
 }
 
 a:hover {
   color: var(--color-primary-hover);
+}
+
+/* Glass utility class */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
 }
