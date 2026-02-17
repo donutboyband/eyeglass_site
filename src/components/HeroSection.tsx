@@ -89,7 +89,6 @@ export function HeroSection({ installCommand, copied, onCopy }: Props) {
       <div className="hero-proof">
         <span className="chip">Auto-commit + undo</span>
         <span className="chip">A11y + style capture</span>
-        <span className="chip">Framework aware</span>
       </div>
       <svg className="hub-pointer-arrow" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
