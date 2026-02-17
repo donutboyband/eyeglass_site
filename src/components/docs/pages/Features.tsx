@@ -2,8 +2,8 @@ export function Features() {
   return (
     <>
       <section className="docs-section" id="framework-detection">
-        <h2>Framework Detection</h2>
-        <p>Eyeglass automatically detects which framework you're using and extracts framework-specific metadata.</p>
+        <h2>React Detection</h2>
+        <p>Eyeglass is React-only in 2.0 and digs directly into the Fiber tree to surface runtime metadata.</p>
 
         <h3>Supported Frameworks</h3>
         <table style={{ width: '100%', borderCollapse: 'collapse' }}>
@@ -22,37 +22,15 @@ export function Features() {
               <td style={{ textAlign: 'center', padding: '0.5rem' }}>Yes (dev mode)</td>
               <td style={{ textAlign: 'center', padding: '0.5rem' }}>Yes</td>
             </tr>
-            <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-              <td style={{ padding: '0.5rem' }}><strong>Vue 2/3</strong></td>
-              <td style={{ textAlign: 'center', padding: '0.5rem' }}>Yes</td>
-              <td style={{ textAlign: 'center', padding: '0.5rem' }}>Yes</td>
-              <td style={{ textAlign: 'center', padding: '0.5rem' }}>Yes</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-              <td style={{ padding: '0.5rem' }}><strong>Svelte</strong></td>
-              <td style={{ textAlign: 'center', padding: '0.5rem' }}>Yes</td>
-              <td style={{ textAlign: 'center', padding: '0.5rem' }}>No</td>
-              <td style={{ textAlign: 'center', padding: '0.5rem' }}>No</td>
-            </tr>
-            <tr>
-              <td style={{ padding: '0.5rem' }}><strong>Vanilla</strong></td>
-              <td style={{ textAlign: 'center', padding: '0.5rem' }}>No</td>
-              <td style={{ textAlign: 'center', padding: '0.5rem' }}>No</td>
-              <td style={{ textAlign: 'center', padding: '0.5rem' }}>No</td>
-            </tr>
           </tbody>
         </table>
 
         <h3>How Detection Works</h3>
-        <p><strong>React:</strong> Walks the Fiber tree to find component names, file paths (from <code>_debugSource</code>), and props.</p>
-        <p><strong>Vue:</strong> Inspects <code>__vue__</code> property to extract component options, file paths (from <code>__file</code>), and reactive data.</p>
-        <p><strong>Svelte:</strong> Limited detection via class names and component structure.</p>
-        <p><strong>Vanilla:</strong> Falls back to element identifiers (id, className, data attributes).</p>
+        <p><strong>React:</strong> Walks the Fiber tree to find component names, file paths (from <code>_debugSource</code>), props, hooks, and context.</p>
 
         <h3>File Path Requirements</h3>
         <ul>
           <li><strong>React:</strong> Requires dev builds with source maps. The <code>_debugSource</code> property is only available in development mode.</li>
-          <li><strong>Vue:</strong> The <code>__file</code> property is typically available in both dev and production builds.</li>
         </ul>
       </section>
 

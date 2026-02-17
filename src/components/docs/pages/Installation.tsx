@@ -83,6 +83,7 @@ export function Installation() {
           <li>Installs <code>@eyeglass/inspector</code> as a dev dependency</li>
           <li>Adds the import to your entry file</li>
           <li>Creates <code>.claude/settings.json</code> with MCP server config</li>
+          <li>Sets up local MCP (<code>.copilot/mcp-config.json</code>) or Codex HTTP docs (<code>.codex/eyeglass.md</code>) when selected</li>
         </ul>
         <h3>CLI Options</h3>
         <CodeBlock code={cliOptionsCode} language="bash" />

@@ -44,7 +44,7 @@ export function GettingStarted() {
         <h3>Key Benefits</h3>
         <ul>
           <li><strong>Visual Selection:</strong> Click elements instead of describing them in text</li>
-          <li><strong>Framework-Aware:</strong> Extracts React/Vue/Svelte component names and file paths</li>
+          <li><strong>React-Aware:</strong> Extracts React component names, file paths, props, hooks, and context</li>
           <li><strong>Semantic Context:</strong> Full accessibility, style, and layout information</li>
           <li><strong>Git Integration:</strong> Auto-commit changes with one-click undo</li>
           <li><strong>Real-Time Feedback:</strong> See the agent's progress directly in your browser</li>

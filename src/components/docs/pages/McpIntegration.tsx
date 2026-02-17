@@ -274,34 +274,34 @@ report_action({
       </section>
 
       <section className="docs-section" id="http-endpoints">
-        <h2>HTTP Endpoints</h2>
-        <p>The bridge always runs an HTTP server on port 3300 alongside the MCP server. This enables browser communication and provides a REST API for agents that don't support MCP (like Codex).</p>
+        <h2>HTTP + SSE Endpoints</h2>
+        <p>The bridge always runs an HTTP server on port 3300 alongside MCP. REST + SSE mirror the tools and add browser controls.</p>
 
         <h3>Available Endpoints</h3>
         <div className="docs-table">
           <div className="docs-row">
             <span className="mono">GET /health</span>
-            <span>Health check endpoint</span>
+            <span>Health check</span>
           </div>
           <div className="docs-row">
             <span className="mono">GET /api/wait</span>
-            <span>Wait for new focus request (long-polling, blocks until user submits)</span>
+            <span>Wait for new focus (long-poll, returns markdown)</span>
           </div>
           <div className="docs-row">
             <span className="mono">GET /api/focus</span>
-            <span>Get current focus context</span>
+            <span>Current focus as markdown</span>
           </div>
           <div className="docs-row">
             <span className="mono">GET /api/history</span>
-            <span>Get focus history (up to 5 recent)</span>
+            <span>Recent focus history (up to 5)</span>
           </div>
           <div className="docs-row">
             <span className="mono">POST /api/status</span>
-            <span>Update browser status (idle, pending, fixing, success, failed)</span>
+            <span>Update status (idle, pending, fixing, success, failed)</span>
           </div>
           <div className="docs-row">
             <span className="mono">POST /api/thought</span>
-            <span>Send agent reasoning to the browser</span>
+            <span>Send reasoning to the browser</span>
           </div>
           <div className="docs-row">
             <span className="mono">POST /api/action</span>
@@ -317,15 +317,19 @@ report_action({
           </div>
           <div className="docs-row">
             <span className="mono">POST /undo</span>
-            <span>Trigger undo of last commit</span>
+            <span>Undo last commit for an interaction</span>
           </div>
           <div className="docs-row">
             <span className="mono">POST /commit</span>
-            <span>Trigger a commit</span>
+            <span>Manual commit when auto-commit is off</span>
+          </div>
+          <div className="docs-row">
+            <span className="mono">POST /clear</span>
+            <span>Clear active + history badges</span>
           </div>
           <div className="docs-row">
             <span className="mono">GET /events</span>
-            <span>Server-sent events stream for real-time updates</span>
+            <span>Server-sent events stream</span>
           </div>
         </div>
 

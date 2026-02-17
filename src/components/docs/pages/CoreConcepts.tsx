@@ -4,37 +4,29 @@ const sampleSnapshot = `{
   "role": "button",
   "name": "Buy now",
   "tagName": "button",
-  "id": "cta",
-  "className": "primary",
-  "dataAttributes": { "testid": "buy-btn" },
+  "dataAttributes": { "data-testid": "buy-btn" },
   "framework": {
-    "name": "react",
-    "componentName": "PricingCard",
+    "type": "react",
+    "displayName": "PricingCard",
     "filePath": "src/components/PricingCard.tsx",
     "lineNumber": 42,
-    "props": { "intent": "primary", "size": "lg" },
+    "state": {
+      "props": { "intent": "primary", "size": "lg" },
+      "hooks": [
+        { "name": "useState", "label": "isLoading", "value": false },
+        { "name": "useEffect", "label": "fetchPricing" }
+      ],
+      "context": [
+        { "name": "ThemeProvider", "value": "light" }
+      ]
+    },
     "ancestry": ["App", "HomePage", "PricingSection"]
   },
-  "a11y": {
-    "label": "Buy now",
-    "description": null,
-    "disabled": false,
-    "expanded": undefined,
-    "checked": undefined,
-    "hidden": false
-  },
-  "geometry": {
-    "x": 422,
-    "y": 688,
-    "width": 180,
-    "height": 52,
-    "visible": true
-  },
+  "a11y": { "label": "Buy now", "description": null, "disabled": false, "hidden": false },
+  "geometry": { "x": 422, "y": 688, "width": 180, "height": 52, "visible": true },
   "styles": {
     "display": "flex",
     "position": "static",
-    "flexDirection": undefined,
-    "gridTemplate": undefined,
     "padding": "12px 24px",
     "margin": "0px",
     "color": "rgb(255, 255, 255)",
@@ -42,19 +34,36 @@ const sampleSnapshot = `{
     "fontFamily": "Inter, sans-serif",
     "zIndex": "auto"
   },
+  "causality": {
+    "events": {
+      "listeners": [{ "type": "click", "capture": false }],
+      "blockingHandlers": []
+    },
+    "stackingContext": { "isStackingContext": false, "parentContext": null, "effectiveZIndex": 0 },
+    "layoutConstraints": ["Width constrained by flex container"]
+  },
+  "perception": {
+    "affordance": { "looksInteractable": true, "isInteractable": true, "dissonanceScore": 0 },
+    "visibility": { "isOccluded": false, "effectiveOpacity": 1 },
+    "legibility": { "contrastRatio": 4.2, "wcagStatus": "pass", "effectiveBgColor": "rgb(14,165,233)" },
+    "usability": { "touchTargetSize": "180x52", "isTouchTargetValid": true }
+  },
+  "metal": {
+    "pipeline": { "layerPromoted": false, "layoutThrashingRisk": "none" },
+    "performance": { "renderCount": 3, "lastRenderReason": "Prop 'style' changed identity" },
+    "memory": { "listenerCount": 1 }
+  },
+  "systemic": {
+    "impact": { "importCount": 4, "riskLevel": "Moderate" },
+    "designSystem": { "tokenMatches": [{ "property": "color", "token": "blue-500" }], "deviations": [] }
+  },
+  "interactionState": { "variant": "hover", "capturedAt": 1739814000000 },
   "neighborhood": {
     "parents": [
       {
         "tagName": "div",
         "className": "card-body",
-        "styles": {
-          "display": "flex",
-          "position": "relative",
-          "flexDirection": "column",
-          "alignItems": "center",
-          "justifyContent": "center",
-          "gap": "1rem"
-        }
+        "styles": { "display": "flex", "position": "relative", "flexDirection": "column", "gap": "1rem" }
       }
     ],
     "children": []
@@ -96,14 +105,12 @@ export function CoreConcepts() {
 
         <h3>Features</h3>
         <ul>
-          <li><strong>Hover Highlighting:</strong> See element boundaries and component names as you hover</li>
-          <li><strong>Click to Select:</strong> Single-click to select an element and open the request panel</li>
-          <li><strong>Multi-Select:</strong> Select multiple items to pass to the agent</li>
-          <li><strong>Framework Detection:</strong> Automatically detects React, Vue, and Svelte component names and file paths</li>
-          <li><strong>Request Panel:</strong> Type your request and submit to the agent</li>
-          <li><strong>Activity Feed:</strong> Real-time updates on the agent's progress via Server-Sent Events</li>
-          <li><strong>Settings:</strong> Toggle auto-commit and theme preferences</li>
-          <li><strong>One-Click Undo:</strong> Revert changes directly from the inspector</li>
+          <li><strong>React runtime lens:</strong> Captures component name, file path, props, hooks, context, and render count directly from the Fiber tree</li>
+          <li><strong>Hover + click select:</strong> Highlight on hover, click to capture a snapshot and open the request panel</li>
+          <li><strong>Multi-select:</strong> Add several elements (payload uses <code>snapshots[]</code>) when a change spans multiple components</li>
+          <li><strong>Health signals:</strong> Surfaces contrast, occlusion, event blocking, and layout-thrashing hints only when issues exist</li>
+          <li><strong>Activity feed:</strong> Real-time status, thoughts, actions, and questions streamed over Server-Sent Events</li>
+          <li><strong>Settings:</strong> Toggle auto-commit and theme; manual commit/undo controls live in the hub</li>
         </ul>
 
         <h3>Activation</h3>
@@ -154,15 +161,15 @@ export function CoreConcepts() {
         <h3>Example Snapshot</h3>
         <CodeBlock code={sampleSnapshot} language="json" />
 
-        <h3>What's Included</h3>
+        <h3>What's Included (7 layers)</h3>
         <ul>
-          <li><strong>Element Identification:</strong> role, name, tagName, id, className, dataAttributes</li>
-          <li><strong>Framework Context:</strong> Detected framework (react/vue/svelte/vanilla), component name, file path with line number, props, and component ancestry chain</li>
-          <li><strong>Accessibility:</strong> ARIA label, description, and states (disabled, expanded, checked, hidden)</li>
-          <li><strong>Geometry:</strong> Bounding box position (x, y), dimensions (width, height), and visibility status</li>
-          <li><strong>Computed Styles:</strong> display, position, flexDirection, gridTemplate, padding, margin, color, backgroundColor, fontFamily, zIndex</li>
-          <li><strong>DOM Neighborhood:</strong> Parent elements with their layout styles (display, flex, grid), and child element summary with counts</li>
-          <li><strong>Page Context:</strong> Current URL and timestamp</li>
+          <li><strong>Identity:</strong> role, name, tag, ids/classes, data attributes, interaction state</li>
+          <li><strong>State (React):</strong> component display name, file/line, props, hooks, context, key, ancestry</li>
+          <li><strong>Visual:</strong> geometry and computed styles</li>
+          <li><strong>Causal:</strong> event listeners, blocking handlers, stacking context, layout constraints</li>
+          <li><strong>Perceptual:</strong> contrast, affordance dissonance, occlusion, touch target sizing</li>
+          <li><strong>Metal:</strong> render counts, last render reason, GPU layer and layout-thrashing risk</li>
+          <li><strong>Systemic:</strong> import count + risk level, design token matches/deviations</li>
         </ul>
 
         <h3>Why This Matters</h3>

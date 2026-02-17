@@ -1,26 +1,37 @@
 import { CodeBlock } from '../../CodeBlock'
 
 const schemaCode = `interface SemanticSnapshot {
-  // Element identification
-  role: string;           // ARIA role (button, link, textbox, etc.)
-  name: string;           // Accessible name
-  tagName: string;        // HTML tag
-  id?: string;            // Element ID
-  className?: string;     // CSS classes
+  // Identity
+  role: string;
+  name: string;
+  tagName: string;
+  id?: string;
+  className?: string;
   dataAttributes?: Record<string, string>;
-
-  // Framework context
-  framework: {
-    name: 'react' | 'vue' | 'svelte' | 'vanilla';
-    componentName?: string;   // e.g., "SubmitButton"
-    filePath?: string;        // e.g., "src/components/SubmitButton.tsx"
-    lineNumber?: number;
-    props?: Record<string, unknown>;
-    ancestry?: string[];      // Parent component chain
+  interactionState?: {
+    variant?: string;
+    label?: string;
+    domPaused?: boolean;
+    capturedAt: number;
   };
 
-  // Accessibility
-  a11y: {
+  // React runtime state (v2.0)
+  framework: {
+    type?: 'react';
+    displayName?: string;
+    key?: string | null;
+    filePath?: string;
+    lineNumber?: number;
+    ancestry?: string[];
+    state?: {
+      props: Record<string, unknown>;
+      hooks: Array<{ name: string; value?: unknown; label?: string }>;
+      context: Array<{ name: string; value: unknown }>;
+    };
+  };
+
+  // Accessibility (legacy-compatible)
+  a11y?: {
     label: string | null;
     description: string | null;
     disabled: boolean;
@@ -29,16 +40,8 @@ const schemaCode = `interface SemanticSnapshot {
     hidden: boolean;
   };
 
-  // Layout
-  geometry: {
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-    visible: boolean;
-  };
-
-  // Styles
+  // Visual
+  geometry: { x: number; y: number; width: number; height: number; visible: boolean };
   styles: {
     display: string;
     position: string;
@@ -52,7 +55,41 @@ const schemaCode = `interface SemanticSnapshot {
     zIndex: string;
   };
 
-  // DOM neighborhood for layout context
+  // Causal (event + layout mechanics)
+  causality?: {
+    events: {
+      listeners: Array<{ type: string; capture: boolean; source?: string }>;
+      blockingHandlers: Array<{ element: string; event: string; reason: string }>;
+    };
+    stackingContext: { isStackingContext: boolean; parentContext: string | null; reason?: string; effectiveZIndex: number };
+    layoutConstraints: string[];
+  };
+
+  // Perceptual
+  perception?: {
+    affordance: { looksInteractable: boolean; isInteractable: boolean; dissonanceScore: number };
+    visibility: { isOccluded: boolean; occludedBy?: string; effectiveOpacity: number };
+    legibility: { contrastRatio: number; wcagStatus: 'pass' | 'fail'; effectiveBgColor: string };
+    usability: { touchTargetSize: string; isTouchTargetValid: boolean };
+  };
+
+  // Metal
+  metal?: {
+    pipeline: { layerPromoted: boolean; layoutThrashingRisk: 'none' | 'low' | 'high' };
+    performance: { renderCount: number; lastRenderReason?: string };
+    memory: { listenerCount: number; detachedNodesRetained?: number };
+  };
+
+  // Systemic
+  systemic?: {
+    impact: { importCount?: number; riskLevel: 'Local' | 'Moderate' | 'Critical' };
+    designSystem: {
+      tokenMatches: Array<{ property: string; token: string }>;
+      deviations: Array<{ property: string; value: string; suggestion: string }>;
+    };
+  };
+
+  // Neighborhood
   neighborhood?: {
     parents: Array<{
       tagName: string;
@@ -67,17 +104,27 @@ const schemaCode = `interface SemanticSnapshot {
         gridTemplate?: string;
       };
     }>;
-    children: Array<{
-      tagName: string;
-      className?: string;
-      count?: number;  // If multiple similar children, group them
-    }>;
+    children: Array<{ tagName: string; className?: string; count?: number }>;
   };
 
-  // Metadata
   timestamp: number;
   url: string;
-}`
+}
+
+interface FocusPayload {
+  interactionId: string;
+  snapshot?: SemanticSnapshot;      // single-select
+  snapshots?: SemanticSnapshot[];   // multi-select
+  userNote: string;
+  autoCommit?: boolean;             // default true
+}
+
+type ActivityEvent =
+  | { type: 'status'; interactionId: string; status: 'idle' | 'pending' | 'fixing' | 'success' | 'failed'; message?: string; timestamp: number }
+  | { type: 'thought'; interactionId: string; content: string; timestamp: number }
+  | { type: 'question'; interactionId: string; questionId: string; question: string; options: Array<{ id: string; label: string }>; timestamp: number }
+  | { type: 'action'; interactionId: string; action: 'reading' | 'writing' | 'searching' | 'thinking'; target: string; complete?: boolean; timestamp: number };
+`
 
 const mcpConfigCode = `// Claude Code (.claude/settings.json)
 {
@@ -147,7 +194,19 @@ export function Advanced() {
         <CodeBlock code={codexConfigCode} language="typescript" />
 
         <h3>Bridge Port</h3>
-        <p>The bridge HTTP server runs on port 3300 by default. This is used by Codex CLI and for keepalive messages.</p>
+        <p>The bridge always runs on port 3300: MCP + REST + SSE in one process.</p>
+
+        <h3>HTTP + SSE Endpoints</h3>
+        <p>Endpoints mirror the MCP tools and add browser controls:</p>
+        <ul>
+          <li><code>GET /health</code> - Health check</li>
+          <li><code>GET /api/wait</code> - Long-poll until a user submits focus</li>
+          <li><code>GET /api/focus</code> / <code>GET /api/history</code> - Current focus or last 5 (markdown)</li>
+          <li><code>POST /api/status</code> / <code>/api/thought</code> / <code>/api/action</code> - Status, reasoning, and activity feed</li>
+          <li><code>POST /answer</code> - Browser posts responses to questions</li>
+          <li><code>POST /undo</code> / <code>/commit</code> / <code>/clear</code> - Undo, manual commit, or clear badges</li>
+          <li><code>GET /events</code> - Server-sent events stream</li>
+        </ul>
 
         <h3>Inspector Settings</h3>
         <p>User preferences are stored in localStorage:</p>
@@ -186,14 +245,11 @@ export function Advanced() {
         <h3>Component Names Not Showing</h3>
         <ul>
           <li><strong>React:</strong> Requires development builds with source maps. Check that you're running <code>npm run dev</code>.</li>
-          <li><strong>Vue:</strong> Ensure components have <code>name</code> property or <code>__name</code> is set.</li>
-          <li><strong>Svelte:</strong> Detection is limited—class names may be your best identifier.</li>
         </ul>
 
         <h3>File Paths Not Showing</h3>
         <ul>
           <li><strong>React:</strong> <code>_debugSource</code> requires dev mode and certain bundler configs (Vite includes it by default).</li>
-          <li><strong>Vue:</strong> <code>__file</code> property should be present if your build tool includes it.</li>
           <li>Check your bundler's source map settings.</li>
         </ul>
 
