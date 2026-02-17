@@ -4,8 +4,6 @@ import "./App.css";
 import { NavBar } from "./components/NavBar";
 import { HeroSection } from "./components/HeroSection";
 import { QuickstartSection } from "./components/QuickstartSection";
-import { DemoSection } from "./components/DemoSection";
-
 import { PackagesSection } from "./components/PackagesSection";
 
 import { FooterSection } from "./components/FooterSection";
@@ -78,7 +76,6 @@ function LandingPage({
         copied={copied}
         onCopy={onCopy}
       />
-      <DemoSection />
       <QuickstartSection items={QUICKSTART} />
       <PackagesSection packages={PACKAGES} />
       <FooterSection />

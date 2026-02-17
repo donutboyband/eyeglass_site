@@ -1,4 +1,3 @@
-import { LandingDemo } from '../../LandingDemo'
 import { CopyIcon, CheckIcon } from '../../Icons'
 import { CopyableCode } from '../CopyableCode'
 import { useState } from 'react'
@@ -33,8 +32,6 @@ export function GettingStarted() {
           </div>
         </div>
       </div>
-
-      <LandingDemo />
 
       <section className="docs-section" id="overview">
         <h2>Overview</h2>
